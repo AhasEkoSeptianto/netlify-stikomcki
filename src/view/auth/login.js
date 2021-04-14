@@ -64,7 +64,7 @@ class login extends React.Component {
 				password: password,
 			};
 			await Axios.post(
-				"http://localhost:3001/api/login",
+				"https://website-stikomcki.herokuapp.com/api/login",
 				data,
 				{
 					headers: {

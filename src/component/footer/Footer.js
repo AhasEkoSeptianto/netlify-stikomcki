@@ -41,7 +41,7 @@ class Footer extends React.Component {
 				email: email,
 				msg: msg,
 			};
-			Axios.post("http://localhost:3001/call-us", data, {
+			Axios.post("https://website-stikomcki.herokuapp.com/call-us", data, {
 				headers: {
 					"Content-Type": "application/json",
 				},
