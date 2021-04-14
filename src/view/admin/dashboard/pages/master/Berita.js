@@ -44,14 +44,14 @@ class Master extends React.Component {
 		const formData = new FormData();
 		formData.append("file", this.state.form.file);
 		await Axios.post(
-			"https://website-stikomcki.herokuapp.com/broadcast/addImage",
+			"https://website-stikomcki.herokuapp.com/api/broadcast/addImage",
 			formData
 		)
 			.then(async (res) => {
 				console.log(res.data);
 				if (res.data.status === true) {
 					await Axios.post(
-						"https://website-stikomcki.herokuapp.com/broadcast/addNews",
+						"https://website-stikomcki.herokuapp.com/api/broadcast/addNews",
 						{
 							judul: this.state.form.judul,
 							isiText: this.state.form.textIsi,
