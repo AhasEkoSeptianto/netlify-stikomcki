@@ -73,7 +73,7 @@ class login extends React.Component {
 				}
 			)
 				.then(async (response) => {
-					let login = await response.data.login; // menunggu respone API db login
+					let login = await response.data.login; // menunggu respone API db logi
 					console.log(response.data)
 					//hadling user input jika user login salah maka akan show error
 					let showerr = document.getElementById("wrong_user&pass");
