@@ -29,7 +29,6 @@ class Master extends React.Component {
 	_onChangeFile = (e) => {
 		console.log(this.state.form);
 		const file = e.target.files[0];
-		console.log("file = ", file);
 		this.setState({ form: { ...this.state.form, file: file } });
 
 		const path = URL.createObjectURL(file);
@@ -48,7 +47,7 @@ class Master extends React.Component {
 			formData
 		)
 			.then(async (res) => {
-				console.log(res.data);
+				console.log("first = " ,res.data);
 				if (res.data.status === true) {
 					await Axios.post(
 						"https://website-stikomcki.herokuapp.com/api/broadcast/addNews",
@@ -70,9 +69,11 @@ class Master extends React.Component {
 
 	_generatedList = async () => {
 		await Axios.get(
-			"https://website-stikomcki.herokuapp.com/broadcast/allData"
+			"https://website-stikomcki.herokuapp.com/api/broadcast/allData"
 		)
-			.then((res) => this.setState({ listNews: res.data }))
+			.then((res) => {
+				this.setState({ listNews: res.data.reverse() })
+			})
 			.catch((err) => console.log(err));
 	};
 
@@ -166,16 +167,16 @@ class Master extends React.Component {
 					<div className={styles.cont_list}>
 						{this.state.listNews.map((val, index) => (
 							<div className={styles.card_list}>
-								<p>{val.judul}</p>
+								<p className={styles.isiText}>{val.title}</p>
 								<img
 									alt="image"
 									src={
 										"https://website-stikomcki.herokuapp.com/" +
-										val.imgUrl
+										val.imageUrl
 									}
 									className={styles.img_list}
 								/>
-								<p className={styles.isiText}>{val.isiText}</p>
+								<p className={styles.isiText}>{val.content}</p>
 							</div>
 						))}
 					</div>
