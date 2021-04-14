@@ -1,0 +1,87 @@
+.link {
+	color: #606060;
+	text-decoration-line: none;
+}
+
+.container {
+	margin: 50px 0px 50px 15px;
+}
+
+.paperMain {
+	width: 100%;
+	padding: 10px;
+}
+
+.paperKategory {
+	padding: 10px;
+	width: 100%;
+}
+
+.paperContent {
+	margin-top: 20px;
+}
+
+.contentheader {
+	padding: 10px;
+	border-bottom: 1px solid #c0c0c0;
+	width: 97%;
+}
+
+.contentmain {
+	margin-top: 50px;
+}
+
+.img_kalender_akademik {
+	padding: 50px;
+	width: 100%;
+}
+
+.table_container {
+	font-size: 15px;
+}
+
+/*right side*/
+.ul_kategori {
+	margin: 20px 0px 0px 5px;
+}
+
+.list_kategori {
+	font-size: 13px;
+	color: #606060;
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+.berita_terbaru {
+	margin-top: 50px;
+}
+/*end*/
+/*phone device*/
+@media screen and (max-width: 600px) {
+	.paperMain {
+		width: 90%;
+		padding: 10px;
+	}
+
+	.img_kalender_akademik {
+		padding: 0px;
+	}
+
+	.paperKategory {
+		padding: 30px;
+		width: 100%;
+	}
+
+	.paperContent {
+		margin-top: 40px;
+	}
+
+	.contentheader {
+		font-size: 18px;
+		width: 95%;
+	}
+
+	.li_tujuan {
+		margin-bottom: 20px;
+	}
+}

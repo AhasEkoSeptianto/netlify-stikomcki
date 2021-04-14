@@ -1,0 +1,240 @@
+.link {
+	text-decoration-line: none;
+	color: #606060;
+}
+
+/*definisi ini untuk membuat background slidejs position*/
+.mainDisplay {
+	position: relative;
+	background-color: #ffffff;
+	font-family: "Arial";
+	z-index: 2;
+}
+
+/*main*/
+
+.contianer {
+	border-bottom: 1px solid black;
+}
+
+.container_nav {
+	display: flex;
+	align-items: center;
+}
+
+/*nav left*/
+
+.nav_left {
+	display: flex;
+	align-items: center;
+}
+
+.logo_nav {
+	padding: 10px;
+	width: 50px;
+}
+
+.container_text_nav {
+	margin-left: 10px;
+	font-weight: 800;
+}
+
+.text_nav_top {
+	color: red;
+}
+.text_nav_bot {
+	color: blue;
+}
+/*end left*/
+
+/*nav right*/
+
+.ulNav {
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+.listNavBtn {
+	font-family: "Arial";
+	font-size: 12px;
+	padding: 15px 5px;
+	margin-right: 5px;
+	position: relative;
+	font-weight: 600;
+	cursor: pointer;
+	color: #404040;
+}
+
+.headDropdown {
+	display: flex;
+	align-items: center;
+	color: #404040;
+}
+
+.togleDropdown {
+	transition: 2s;
+	margin-top: 10px;
+	position: absolute;
+	width: 200px;
+	display: none;
+	background-color: #ffffff;
+}
+
+.listDropDown {
+	list-style: none;
+	padding: 10px 10px;
+	margin-left: -5px;
+}
+
+.listDropDown:hover {
+	background-color: lightblue;
+}
+
+.containermPage {
+	width: 100%;
+	z-index: -1;
+	position: absolute;
+}
+
+.navigated_device {
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+}
+
+/*dropdown*/
+/*end dropdown*/
+
+/*end*/
+
+/*link to pmb*/
+.pmb {
+	font-family: "Arial";
+	font-size: 12px;
+	padding: 15px 5px;
+	margin-right: 5px;
+	position: relative;
+	font-weight: 600;
+	color: #404040;
+}
+
+/*end link to pmb*/
+
+/*phone device*/
+@media screen and (max-width: 600px) {
+	.logo_nav {
+		width: 50px;
+	}
+
+	/*nav left*/
+	.container_nav {
+		display: block;
+		justify-content: center;
+	}
+
+	.nav_left {
+		justify-content: center;
+	}
+
+	/*nav bottom*/
+	.listNavBtn {
+		font-size: 9px;
+		justify-content: center;
+		padding: 5px 5px;
+	}
+
+	.listDropDown:hover {
+		background-color: none;
+	}
+
+	.togleDropdown {
+		width: 150px;
+		margin-top: 5px;
+	}
+
+	/*hide for device phone nav*/
+	.ulNav {
+		width: 0px;
+		height: 0px;
+		overflow: hidden;
+	}
+
+	.container_text_nav {
+		font-size: 12px;
+	}
+
+	/*togle*/
+	.container_for_hp {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 50px;
+		width: 100%;
+	}
+
+	.navigated_device {
+		display: block;
+		width: 100%;
+		height: 100%;
+		color: #2e2e2e;
+		margin-bottom: 20px;
+	}
+
+	.togleHp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: auto;
+		width: 50px;
+		height: 50px;
+		cursor: pointer;
+		border-radius: 10px;
+	}
+
+	/*tombol untuk list hp mode*/
+	.togleListHbutton {
+		height: 0px;
+		overflow: hidden;
+	}
+	/*end*/
+
+	.iconTogle {
+		background-color: #f0f0f0;
+		color: #2e2e2e;
+		border-radius: 5px;
+	}
+
+	.dropdownTogleHp {
+		/*background-color: #f0f0f0; */
+		/*ketika togle diklick maka bg akan berwarna seperti diatas*/
+		border-radius: 10px;
+		padding: 5px 10px;
+		font-size: 12px;
+		cursor: pointer;
+		display: none;
+	}
+
+	.listTogleHpDropdown {
+		list-style: none;
+		margin-bottom: 10px;
+		display: flex;
+		align-items: center;
+	}
+
+	/*togle list child for hp*/
+	.togleListChild {
+		display: flex;
+		align-items: center;
+		font-size: 13px;
+		list-style: none;
+		padding: 10px 20px;
+	}
+
+	.togleListChild:hover {
+		background-color: lightblue !important;
+	}
+	/*end togle list child for hp*/
+
+	/*end togle*/
+}
+/*end device phone*/

@@ -1,0 +1,150 @@
+/*color*/
+/*black #202020*/
+
+/*header navbar*/
+.cont_headNav {
+	margin: 10px;
+}
+
+/*icons nav for mobile device*/
+.cont_navMobile {
+	display: none;
+}
+/*end nav for mobile*/
+
+.headNav_top {
+	color: red;
+	text-align: center;
+}
+
+.headNav_bot {
+	color: blue;
+	text-align: center;
+}
+
+/*end header navbar*/
+
+/*profile user*/
+.cont_profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 30px 0px;
+}
+
+.img_user {
+	padding: 10px;
+	width: 50px;
+}
+/*end profile user*/
+
+/*menu dashboard nav*/
+.cont_menu {
+	position: relative;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	text-decoration-line: none;
+	color: #202020;
+}
+
+.cont_menu:hover {
+	background-color: #daedf4;
+}
+
+.icons_menu {
+	width: 25px;
+	margin: 0px 10px;
+}
+
+.icons_menu_arrow_closed {
+	transition: 0.5s;
+	width: 20px;
+	margin: 0px 20px;
+	position: absolute;
+	right: 0;
+	transform: rotate(0deg);
+}
+
+.icons_menu_arrow_open {
+	transition: 0.5s;
+	width: 20px;
+	margin: 0px 20px;
+	position: absolute;
+	right: 0;
+	transform: rotate(-90deg);
+}
+
+.dropdown_open {
+	transition: 0.5s;
+	height: 50px;
+	margin-left: 50px;
+	overflow: hidden;
+}
+
+.dropdown_close {
+	transition: 0.5s;
+	height: 0px;
+	margin-left: 50px;
+	overflow: hidden;
+}
+
+.dropdown_open li,
+.dropdown_close li {
+	list-style: none;
+	padding: 3px 5px;
+}
+
+.dropdown_open a,
+.dropdown_close a {
+	text-decoration-line: none;
+	color: #000000;
+}
+
+.dropdown_open li:hover {
+	background-color: #daedf4;
+}
+
+/*end menu dashboard nav*/
+
+/*device phone*/
+
+@media only screen and (max-width: 500px) {
+	/*icons nav for mobile device*/
+	.cont_navMobile {
+		display: flex;
+		align-items: center;
+		background-image: linear-gradient(to right, #72bcd4, #add8e6);
+		height: 60px;
+	}
+
+	.icons_nav {
+		padding: 10px 10px;
+		width: 20px;
+		height: 20px;
+	}
+	/*end nav for mobile*/
+	.cont_headNav {
+		width: 200px;
+	}
+
+	.cont_headNav h4 {
+		font-size: 12px;
+		text-align: left;
+	}
+
+	.cont_profile {
+		width: 200px;
+	}
+}
+
+/*end device phone*/
+
+/*device desktop*/
+@media screen and (max-width: 850px) {
+	.cont_headNav h4 {
+		font-size: 11px;
+	}
+}
+
+/*end device desktop*/
