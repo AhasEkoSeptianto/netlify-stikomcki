@@ -9,15 +9,15 @@
 
 .nav_berita p {
 	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.25);
-	padding: 5px 8px;
+	padding: 8px 15px;
 	margin: 5px;
 	font-size: 15px;
-	border-radius: 10px;
+	border-radius: 5px;
 	cursor: pointer;
 }
 
 .nav_berita p:hover {
-	background-color: #f2f2f2;
+	background-color: #daedf4;
 }
 /*create*/
 
@@ -88,7 +88,6 @@
 
 .inputText textarea {
 	width: 85%;
-	height: 100%;
 	margin-left: 10px;
 	resize: none;
 	padding:10px;
@@ -133,6 +132,7 @@
 
 .img_list {
 	height: 150px;
+	max-width: 90%;
 }
 
 .isiText {

@@ -85,7 +85,7 @@ class Master extends React.Component {
 		return (
 			<div className={styles.body}>
 				<div className={styles.nav_berita}>
-					<p onClick={() => this.setState({ navCreate: true })}>
+					<p onClick={() => this.setState({ navCreate: true })} className={styles.create_btn}>
 						create
 					</p>
 					<p onClick={() => this.setState({ navCreate: false })}>

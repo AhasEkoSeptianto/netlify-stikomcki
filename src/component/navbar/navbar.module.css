@@ -229,10 +229,6 @@
 		list-style: none;
 		padding: 10px 20px;
 	}
-
-	.togleListChild:hover {
-		background-color: lightblue !important;
-	}
 	/*end togle list child for hp*/
 
 	/*end togle*/

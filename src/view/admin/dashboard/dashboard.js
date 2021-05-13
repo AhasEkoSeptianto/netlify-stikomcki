@@ -126,7 +126,7 @@ class dashboard extends React.Component {
 							className={styles.link}
 							onClick={() => this._logout()}
 						>
-							Logout
+							Exit
 						</Link>
 					</div>
 					{/* end comp untuk hover profile */}

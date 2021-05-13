@@ -79,7 +79,6 @@
 	transition: 0.5s;
 	height: 50px;
 	margin-left: 50px;
-	overflow: hidden;
 }
 
 .dropdown_close {
@@ -104,6 +103,8 @@
 .dropdown_open li:hover {
 	background-color: #daedf4;
 }
+
+
 
 /*end menu dashboard nav*/
 

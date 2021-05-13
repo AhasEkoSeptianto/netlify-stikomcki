@@ -1,7 +1,41 @@
 .body {
-	display: flex;
-	height: 100vh;
-	justify-content: center;
-	align-items: center;
-	font-weight: bold;
+	padding:30px;
+	color: #606060;
+}
+
+
+.titleHead{
+	margin : 0px 0px 20px 0px ;
+}
+
+.titleSetting {
+	margin-bottom: 10px; 
+	font-size: 20px;
+}
+
+.formSetting {
+	border : 1px solid #E0E0E0;
+	padding : 10px;
+	margin-bottom: 20px;
+}
+
+.formSetting input {
+	padding:5px;
+	width: 90%;
+	margin-top: 5px;
+}
+
+.formSetting button {
+	color: #ffffff;
+	padding:5px;
+	background-color: #69B1CB;
+}
+
+.buttonLogout {
+	border-radius: 5px;
+	padding:10px 15px;
+	cursor: pointer;
+	color: #ffffff;
+	border:none;
+	background-color: #FF3333;
 }
