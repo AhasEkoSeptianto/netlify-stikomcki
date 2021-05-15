@@ -3,43 +3,26 @@ import React, { Fragment } from "react";
 // mycss
 import styles from "./navbar_left.module.css";
 
-// image
-import User from "./../../../../../asset/image/user/user.png";
-
 // router
 import { Link } from "react-router-dom";
 
 // myicons
-import Dashboard from "./../../../../../asset/image/icons/menu.png";
-import Master from "./../../../../../asset/image/icons/master.png";
-import Arrow from "./../../../../../asset/image/arrow.png";
+import Dashboard from "./../../../../../asset/image/icons/dashboard.svg";
+import News from './../../../../../asset/image/icons/broadcast.svg';
+import Settings from './../../../../../asset/image/icons/settings.svg';
+
 import IconsCloceNav from "./../../../../../asset/image/icons/close.png";
 
 // router
-import { RouterMaster } from "./../../router.js";
+import { router_nav } from "./../../routerNav.js";
+
+// redux
+import { connect } from 'react-redux';
 
 class navbar_left extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			dropdown: {
-				master: false,
-			},
-		};
-	}
 
 	_btnNavMobile = () => {
 		document.getElementById("myNav").style.width = "0%";
-	};
-
-	setDropdown = (val) => {
-		this.state.dropdown[val]
-			? this.setState({
-					dropdown: { ...this.state.dropdown, [val]: false },
-			  })
-			: this.setState({
-					dropdown: { ...this.state.dropdown, [val]: true },
-			  });
 	};
 
 	render() {
@@ -66,47 +49,19 @@ class navbar_left extends React.Component {
 				</div>
 				{/* end container header // comp profile user */}
 				<div className={styles.cont_profile}>
-					<img alt="user" src={User} className={styles.img_user} />
-					<h4>Admin</h4>
+					<img alt="user" src="/image/icons/user.svg" className={styles.img_user} />
+					<h4>{this.props.user}</h4>
 				</div>
 				{/* end comp profile user */}
 
 				{/* comp_Menu */}
-				<Link to="/dashboard" className={styles.cont_menu}>
-					<img alt="dashboard" src={Dashboard} className={styles.icons_menu} />
-					<h4>Dashboard</h4>
-				</Link>
-				<Link
-					className={styles.cont_menu}
-					onClick={() => this.setDropdown("master")}
-				>
-					<img alt="menu icons" src={Master} className={styles.icons_menu} />
-					<h4>Master</h4>
-					<img
-						alt="icons"
-						src={Arrow}
-						className={
-							this.state.dropdown.master
-								? styles.icons_menu_arrow_open
-								: styles.icons_menu_arrow_closed
-						}
-					/>
-				</Link>
-				{/* drop down master */}
-				<ul
-					className={
-						this.state.dropdown.master
-							? styles.dropdown_open
-							: styles.dropdown_close
-					}
-				>
-					{RouterMaster.map((val, index) => (
-						<Link className={styles.link} to={val.link}>
-							<li>{val.name}</li>
-						</Link>
+
+				{router_nav.map((val, index) => (
+					<Link to={val.link} className={styles.cont_menu}>
+						<img alt={val.name} src={val.icons} className={styles.icons_menu} />
+						<h4>{val.name}</h4>
+					</Link>
 					))}
-				</ul>
-				{/* end dropdown master */}
 
 				{/* end comp Menu */}
 			</Fragment>
@@ -114,4 +69,10 @@ class navbar_left extends React.Component {
 	}
 }
 
-export default navbar_left;
+const mapStateToProps = (state) => {
+	return {
+		user: state.user,
+	};
+};
+
+export default connect(mapStateToProps, null)(navbar_left);

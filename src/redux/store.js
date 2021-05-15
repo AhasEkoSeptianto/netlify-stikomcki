@@ -1,6 +1,6 @@
 //  create redux
 const initialState = {
-	username: "annonymous",
+	user: "annonymous",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -8,13 +8,13 @@ const rootReducer = (state = initialState, action) => {
 		case "login": {
 			return {
 				...state,
-				username: action.user,
+				user: action.user,
 			};
 		}
 		case "logout": {
 			return {
 				...state,
-				username: "",
+				user: "",
 			};
 		}
 		default : {
@@ -23,10 +23,5 @@ const rootReducer = (state = initialState, action) => {
 	}
 	return state;
 };
-
-// sucribe
-// store.subscribe(() => {
-// 	console.log("store change ", store.getState());
-// });
 
 export default rootReducer;

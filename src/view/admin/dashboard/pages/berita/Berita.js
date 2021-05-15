@@ -133,7 +133,7 @@ class Master extends React.Component {
 					</div>
 					<div className={styles.right_windowCreate}>
 						<div className={styles.inputText}>
-							<p>text body </p>
+							<p>Content </p>
 							<textarea
 								type="text"
 								onChange={(e) =>

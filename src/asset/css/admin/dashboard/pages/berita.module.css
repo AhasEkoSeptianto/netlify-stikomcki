@@ -42,8 +42,9 @@
 	height: 50px;
 }
 .left_windowCreate textarea {
+	font-family: 'Arial',serif,sans-serif,monospace;
 	position: absolute;
-	padding: 5px;
+	padding: 1px;
 	right: 0;
 	width: 60%;
 	resize: none;
@@ -87,6 +88,7 @@
 }
 
 .inputText textarea {
+	font-family: serif,sans-serif,monospace;
 	width: 85%;
 	margin-left: 10px;
 	resize: none;

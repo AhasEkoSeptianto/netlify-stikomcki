@@ -15,101 +15,67 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Axios from "axios";
 
 // router
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Cookie
 import Cookies from "universal-cookie";
 
+// lib
+import { post } from './../../lib/axios';
+import { is_auth } from './../../lib/is_auth';
+
 class login extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			redirect: false,
 			isLoading: false,
-			login: {
-				username: null,
-				password: null,
-			},
 		};
 	}
 
-	is_auth() {
-		var auth = new Cookies().get("username");
-		if (auth) {
-			this.setState({ redirect: true });
-			return true;
-		}
-		return false;
-	}
-
-	validate = (item, id) => {
-		if (item !== "") {
-			document.getElementById(id).setAttribute("style", "border:none");
-			return item;
-		} else {
-			document
-				.getElementById(id)
-				.setAttribute("style", "border:2px solid red;");
-		}
-	};
-
 	submitForm = async () => {
 		this.setState({ isLoading: true });
-		let username = this.state.login.username;
-		let password = this.state.login.password;
+
+		let username = document.getElementById('username_login').value;
+		let password = document.getElementById('password_login').value;
+
 		if (username !== "" && password !== "") {
 			let data = {
 				username: username,
 				password: password,
 			};
-			await Axios.post(
-				"https://website-stikomcki.herokuapp.com/api/login",
-				data,
-				{
-					headers: {
-						"Content-Type": "application/json",
-					},
-				}
-			)
-				.then(async (response) => {
-					let login = await response.data.login; // menunggu respone API db logi
-					console.log(response.data)
-					//hadling user input jika user login salah maka akan show error
-					let showerr = document.getElementById("wrong_user&pass");
-					if (login === true) {
-						this.props.Login(username); //setting username user ke redux
-						new Cookies().set("auth-token", response.data.token, {
-							path: "/",
-						});
-						new Cookies().set("username", response.data.username);
-						showerr.style.display = "none";
-						this.setState({ redirect: true });
-					} else {
-						showerr.style.display = "flex";
-					}
-				})
-				.catch((error) => {
-					console.log(error);
+
+			let is_login = await post(`${process.env.REACT_APP_BASE_URL}/api/login`, data)
+
+			let showerr = document.getElementById("wrong_user&pass");
+			if (is_login.data.login === true) {
+				
+				this.props.Login(is_login.data.name); //setting username user ke redux
+				
+				new Cookies().set("auth-token", is_login.data.token, {
+					path: "/",
 				});
+				new Cookies().set("user", is_login.data.name);
+				showerr.style.display = "none";
+
+				this.props.history.push('/');
+
+			} else {
+				showerr.style.display = "flex";
+			}		
 		} else {
-			console.log("error");
+			console.log("field form is valid");
 		}
+
+
 		this.setState({ isLoading: false });
 	};
 
 	componentDidMount() {
-		let is_login = this.is_auth(); //check jika user memiliki akses login
-		if (is_login === true) {
-			this.props.Login(localStorage.getItem("username"));
-		}
-		alert("demo pakai\nusername:admin\npassword:admin");
+		let isAuth = is_auth();
+		isAuth ? this.props.history.push('/') : alert("demo pakai\nusername:admin\npassword:admin");
 	}
 
 	render() {
-		if (this.state.redirect === true) {
-			return <Redirect to="/" />;
-		}
 		return (
 			<div className={s.bg}>
 				<div className={s.container_login}>
@@ -134,15 +100,8 @@ class login extends React.Component {
 								className={s.logo_login}
 							/>
 							<input
+								id='username_login'
 								type="text"
-								onChange={(e) =>
-									this.setState({
-										login: {
-											...this.state.login,
-											username: e.target.value,
-										},
-									})
-								}
 								name="username"
 								placeholder="username"
 								className={s.form_user}
@@ -151,18 +110,11 @@ class login extends React.Component {
 						<div className={s.password} id="password">
 							<LockOutlinedIcon className={s.logo_login} />
 							<input
+								id='password_login'
 								type="password"
 								name="password"
 								placeholder="password"
 								className={s.form_user}
-								onChange={(e) =>
-									this.setState({
-										login: {
-											...this.state.login,
-											password: e.target.value,
-										},
-									})
-								}
 							/>
 						</div>
 						<button

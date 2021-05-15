@@ -16,6 +16,9 @@ import NavRight from "./comp_dashboard/navbar_right/navbarRight.js";
 // router
 import { Link } from "react-router-dom";
 
+// lib
+import { is_auth } from './../../../lib/is_auth';
+
 class dashboard extends React.Component {
 	constructor(props) {
 		super(props);
@@ -59,6 +62,9 @@ class dashboard extends React.Component {
 	};
 
 	componentDidMount() {
+		let isAuth = is_auth();
+		isAuth ? console.log('user loggend') : this.props.history.push('/') ;
+
 		window.addEventListener("resize", this._detectNavDesktop);
 	}
 

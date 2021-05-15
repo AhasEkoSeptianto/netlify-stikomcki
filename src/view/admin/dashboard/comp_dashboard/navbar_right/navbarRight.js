@@ -3,8 +3,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Dashboard from "./../../pages/Dashboard.js";
-import Berita from "./../../pages/master/Berita.js";
-import Settings from "./../../pages/master/Settings.js";
+import Berita from "./../../pages/berita/Berita.js";
+import Settings from "./../../pages/settings/Settings.js";
 
 class navbarRight extends React.Component {
 	constructor(props) {
@@ -27,12 +27,12 @@ class navbarRight extends React.Component {
 					component={Dashboard}
 				/>
 				<Route
-					path={`${this.state.url.path}/master/berita`}
+					path={`${this.state.url.path}/berita`}
 					exact={true}
 					component={Berita}
 				/>
 				<Route
-					path={`${this.state.url.path}/master/settings`}
+					path={`${this.state.url.path}/settings`}
 					exact={true}
 					component={Settings}
 				/>

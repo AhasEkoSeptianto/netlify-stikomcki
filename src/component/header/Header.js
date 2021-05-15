@@ -21,24 +21,20 @@ import { connect } from "react-redux";
 // cookies
 import Cookies from "universal-cookie";
 
+// lib
+import { is_auth } from './../../lib/is_auth';
+
 class Header extends React.Component {
 
-	is_auth = () => {
-		let storage = new Cookies().get("auth-token");
-		if (storage) {
-			this.props.login(new Cookies().get("username"));
-		}
-	};
-
 	showAuth = () => {
-		if (this.props.username === "annonymous") {
+		if (this.props.user === "annonymous") {
 			return (
 				<Link className={styles.container_login} to="/login">
 					<p className={styles.p_login}>Login</p>
 					<AccountCircleIcon />
 				</Link>
 			);
-		} else if (this.props.username === "admin") {
+		} else {
 			return (
 				<Fragment>
 					<Link className={styles.container_login} to="/dashboard">
@@ -58,7 +54,8 @@ class Header extends React.Component {
 	};
 
 	componentDidMount() {
-		this.is_auth();
+		let isAuth = is_auth();
+		if (isAuth) { this.props.login(new Cookies().get("user")); }
 	}
 
 	render() {
@@ -110,7 +107,7 @@ class Header extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		username: state.username,
+		user: state.user,
 	};
 };
 
@@ -121,7 +118,7 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		logout: () => {
 			dispatch({ type: "logout", user: "annonymous" });
-			new Cookies().remove("username");
+			new Cookies().remove("user");
 			new Cookies().remove("auth-token");
 
 			window.location.reload();
