@@ -65,6 +65,10 @@ class login extends React.Component {
 		this.setState({ isLoading: false });
 	};
 
+	componentDidMount(){
+		alert('gunakan akun\nusername: admin\npassword: admin')
+	}
+
 	render() {
 		return (
 			<div className={s.bg}>
