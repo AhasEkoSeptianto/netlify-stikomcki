@@ -15,47 +15,29 @@ import styles from "./Header.module.css";
 // link
 import { Link } from "react-router-dom";
 
-// redux
-import { connect } from "react-redux";
-
-// cookies
-import Cookies from "universal-cookie";
-
 // lib
 import { is_auth } from './../../lib/is_auth';
+import { removeCookies, getAllCookies } from './../../lib/cookie';
 
 class Header extends React.Component {
 
-	showAuth = () => {
-		if (this.props.user === "annonymous") {
-			return (
-				<Link className={styles.container_login} to="/login">
-					<p className={styles.p_login}>Login</p>
-					<AccountCircleIcon />
-				</Link>
-			);
-		} else {
-			return (
-				<Fragment>
-					<Link className={styles.container_login} to="/dashboard">
-						<p className={styles.p_login}>Dashboard</p>
-						<DashboardIcon />
-					</Link>
-					<div
-						className={styles.container_logout}
-						onClick={this.props.logout}
-					>
-						<p className={styles.p_login}>Logout</p>
-						<AccountCircleIcon />
-					</div>
-				</Fragment>
-			);
+	constructor(props){
+		super(props);
+		this.state = {
+			isAuth: false,
+			isLoading: true,
 		}
-	};
+	}
 
-	componentDidMount() {
-		let isAuth = is_auth();
-		if (isAuth) { this.props.login(new Cookies().get("user")); }
+	logout = () => {
+		removeCookies('user')
+		removeCookies('auth-token')
+		window.location.reload()
+	}
+
+	async componentDidMount(){
+		let isLogged = await is_auth();
+		this.setState({isAuth: isLogged, isLoading:false});
 	}
 
 	render() {
@@ -95,7 +77,32 @@ class Header extends React.Component {
 								xs={6}
 								className={styles.headerListRight}
 							>
-								{this.showAuth()}
+
+								{/* check apakah user telah login */}
+								<div className={`${this.state.isLoading ? styles.loading : styles.notloading }`}>
+									{this.state.isAuth ? (
+										<Fragment>
+											<Link className={styles.container_login} to="/dashboard">
+												<p className={styles.p_login}>Dashboard</p>
+												<DashboardIcon />
+											</Link>
+											<div
+												className={styles.container_logout}
+												onClick={this.logout}
+											>
+												<p className={styles.p_login}>Logout</p>
+												<AccountCircleIcon />
+											</div>
+										</Fragment>
+										) : (
+											<Link className={styles.container_login} to="/login">
+												<p className={styles.p_login}>Login</p>
+												<AccountCircleIcon />
+											</Link>
+										) }
+									
+								</div>
+
 							</Grid>
 						</Grid>
 					</Container>
@@ -105,25 +112,5 @@ class Header extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		user: state.user,
-	};
-};
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		login: (user) => {
-			dispatch({ type: "login", user: user });
-		},
-		logout: () => {
-			dispatch({ type: "logout", user: "annonymous" });
-			new Cookies().remove("user");
-			new Cookies().remove("auth-token");
-
-			window.location.reload();
-		},
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

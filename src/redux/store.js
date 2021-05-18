@@ -1,27 +1,23 @@
+import { getCookies } from './../lib/cookie';
+
 //  create redux
 const initialState = {
-	user: "annonymous",
+	user: getCookies('user'),
 };
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case "login": {
+		case "change_name": {
 			return {
 				...state,
 				user: action.user,
 			};
 		}
-		case "logout": {
-			return {
-				...state,
-				user: "",
-			};
-		}
+		
 		default : {
-			console.log("none");
+			return state;
 		}
 	}
-	return state;
 };
 
 export default rootReducer;

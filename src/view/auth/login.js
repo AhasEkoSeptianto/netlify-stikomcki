@@ -11,9 +11,6 @@ import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-// axios
-import Axios from "axios";
-
 // router
 import { connect } from "react-redux";
 
@@ -23,6 +20,7 @@ import Cookies from "universal-cookie";
 // lib
 import { post } from './../../lib/axios';
 import { is_auth } from './../../lib/is_auth';
+import { setCookies } from './../../lib/cookie';
 
 class login extends React.Component {
 	constructor(props) {
@@ -45,16 +43,13 @@ class login extends React.Component {
 			};
 
 			let is_login = await post(`${process.env.REACT_APP_BASE_URL}/api/login`, data)
-
+			console.log(is_login)
 			let showerr = document.getElementById("wrong_user&pass");
 			if (is_login.data.login === true) {
+
+				setCookies('user', is_login.data.name);
+				setCookies('auth-token', is_login.data.token);
 				
-				this.props.Login(is_login.data.name); //setting username user ke redux
-				
-				new Cookies().set("auth-token", is_login.data.token, {
-					path: "/",
-				});
-				new Cookies().set("user", is_login.data.name);
 				showerr.style.display = "none";
 
 				this.props.history.push('/');
@@ -69,11 +64,6 @@ class login extends React.Component {
 
 		this.setState({ isLoading: false });
 	};
-
-	componentDidMount() {
-		let isAuth = is_auth();
-		isAuth ? this.props.history.push('/') : alert("demo pakai\nusername:admin\npassword:admin");
-	}
 
 	render() {
 		return (
@@ -143,17 +133,4 @@ class login extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		username: state.username,
-	};
-};
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		Login: (user) => dispatch({ type: "login", user: user }),
-		logout: () => dispatch({ type: "logout", user: "" }),
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(login);
+export default login;

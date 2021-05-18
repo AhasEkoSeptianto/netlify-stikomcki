@@ -53,7 +53,7 @@ class Home extends React.Component {
 						</div>
 						<img
 							src={bg3}
-							alt="Image 1"
+							alt=""
 							className={s.img_background}
 						></img>
 					</SplideSlide>
@@ -68,14 +68,14 @@ class Home extends React.Component {
 						</div>
 						<img
 							src={bg1}
-							alt="Image 1"
+							alt=""
 							className={s.img_background}
 						/>
 					</SplideSlide>
 					<SplideSlide>
 						<img
 							src={bg2}
-							alt="Image 1"
+							alt=""
 							className={s.img_background}
 						/>
 					</SplideSlide>

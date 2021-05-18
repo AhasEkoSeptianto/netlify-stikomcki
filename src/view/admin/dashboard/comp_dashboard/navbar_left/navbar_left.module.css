@@ -1,10 +1,15 @@
 /*color*/
 /*black #202020*/
 
+.body {
+	color: #202020;
+}
+
 /*header navbar*/
 .cont_headNav {
 	margin: 10px;
 }
+
 
 /*icons nav for mobile device*/
 .cont_navMobile {

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 // mycss
 import styles from "./navbar_left.module.css";
@@ -6,15 +6,13 @@ import styles from "./navbar_left.module.css";
 // router
 import { Link } from "react-router-dom";
 
-// myicons
-import Dashboard from "./../../../../../asset/image/icons/dashboard.svg";
-import News from './../../../../../asset/image/icons/broadcast.svg';
-import Settings from './../../../../../asset/image/icons/settings.svg';
-
 import IconsCloceNav from "./../../../../../asset/image/icons/close.png";
 
 // router
 import { router_nav } from "./../../routerNav.js";
+
+// lib
+import { getCookies } from './../../../../../lib/cookie';
 
 // redux
 import { connect } from 'react-redux';
@@ -27,7 +25,7 @@ class navbar_left extends React.Component {
 
 	render() {
 		return (
-			<Fragment>
+			<div className={styles.body}>
 				{/* container header */}
 				{/* icons untuk navbar mobile */}
 				<div className={styles.cont_navMobile}>
@@ -50,7 +48,7 @@ class navbar_left extends React.Component {
 				{/* end container header // comp profile user */}
 				<div className={styles.cont_profile}>
 					<img alt="user" src="/image/icons/user.svg" className={styles.img_user} />
-					<h4>{this.props.user}</h4>
+					<p>{this.props.user}</p>
 				</div>
 				{/* end comp profile user */}
 
@@ -59,20 +57,22 @@ class navbar_left extends React.Component {
 				{router_nav.map((val, index) => (
 					<Link to={val.link} className={styles.cont_menu}>
 						<img alt={val.name} src={val.icons} className={styles.icons_menu} />
-						<h4>{val.name}</h4>
+						<p>{val.name}</p>
 					</Link>
 					))}
 
 				{/* end comp Menu */}
-			</Fragment>
+			</div>
 		);
 	}
 }
 
-const mapStateToProps = (state) => {
+
+const mapStateToProps = state => {
 	return {
 		user: state.user,
-	};
-};
+	}
+}
+
 
 export default connect(mapStateToProps, null)(navbar_left);

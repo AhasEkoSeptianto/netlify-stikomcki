@@ -1,5 +1,6 @@
 .body {
 	height: 100%;
+	color: #606060;
 }
 
 .nav_berita {
@@ -42,9 +43,9 @@
 	height: 50px;
 }
 .left_windowCreate textarea {
-	font-family: 'Arial',serif,sans-serif,monospace;
 	position: absolute;
-	padding: 1px;
+	font-family: serif,sans-serif,monospace;
+	padding: 5px;
 	right: 0;
 	width: 60%;
 	resize: none;

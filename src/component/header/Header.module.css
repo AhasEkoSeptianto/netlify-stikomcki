@@ -7,6 +7,15 @@
 	font-size: 12px;
 }
 /*a0a0a0*/
+
+.loading {
+	display: none;
+}
+
+.notloading {
+	display: flex;
+}
+
 /*left header*/
 .headerListLeft {
 	display: flex;

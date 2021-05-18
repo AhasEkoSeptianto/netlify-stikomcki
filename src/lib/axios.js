@@ -8,13 +8,18 @@ const get = async (url) => {
 		.then(res => resApi = res)
 		.catch(err => resApi = err);
 
+	
 	return resApi;
 }
 
 const post = async (url, data) => {
 	var resApi = [];
-	console.log('here')
-	await Axios.post(url, data)
+	
+	await Axios.post(url, data, {
+			headers : {
+			  'Content-Type' : 'application/json',
+			  'Accept' : 'application/json'
+			}})
 		.then(res => resApi = res)
 		.catch(err => resApi = err);
 

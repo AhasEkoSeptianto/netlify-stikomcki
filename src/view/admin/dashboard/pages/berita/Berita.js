@@ -124,7 +124,7 @@ class Master extends React.Component {
 							<div className={styles.liveImage}>
 								<p>Preview</p>
 								<img
-									alt="preview image"
+									alt=""
 									src={this.state.liveImage}
 									style={{ width: "90%" }}
 								/>

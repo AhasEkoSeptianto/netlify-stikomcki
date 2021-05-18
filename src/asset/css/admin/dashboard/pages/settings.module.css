@@ -27,8 +27,9 @@
 
 .formSetting button {
 	color: #ffffff;
-	padding:5px;
+	padding:5px 10px;
 	background-color: #69B1CB;
+	cursor: pointer;
 }
 
 .buttonLogout {
@@ -38,4 +39,18 @@
 	color: #ffffff;
 	border:none;
 	background-color: #FF3333;
+}
+
+/*change Name page*/
+.container_modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal {
+	background-color: #66b2ff;
+	padding:10px 20px;
+	border: 1px solid #404040;
+	color: #ffffff;
 }

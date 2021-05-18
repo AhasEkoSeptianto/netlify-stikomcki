@@ -35,7 +35,6 @@ class dashboard extends React.Component {
 	};
 
 	_btnProfile = () => {
-		console.log(this.state.profileClick);
 		this.state.profileClick
 			? this.setState({ profileClick: false })
 			: this.setState({ profileClick: true });
