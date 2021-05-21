@@ -42,7 +42,7 @@ class login extends React.Component {
 				password: password,
 			};
 
-			let is_login = await post(`${process.env.REACT_APP_BASE_URL}/api/login`, data)
+			let is_login = await post(`${process.env.REACT_APP_BASE_URL}api/login`, data)
 			console.log(is_login)
 			let showerr = document.getElementById("wrong_user&pass");
 			if (is_login.data.login === true) {

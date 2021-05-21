@@ -9,7 +9,7 @@ var is_auth = async () => {
 		}
 
 		var resAuth = await Axios.post(
-			`${process.env.REACT_APP_BASE_URL}/api/is-auth`, {
+			`${process.env.REACT_APP_BASE_URL}api/is-auth`, {
 			 token:token
 			},
 		).then(res => {
@@ -17,9 +17,6 @@ var is_auth = async () => {
 				return true;
 			}
 		}).catch(err => {
-			if (err.response.status === 401) {
-				return false;
-			}
 
 			return false
 

@@ -14,7 +14,7 @@ class detailMhs extends React.Component{
 
 	async componentDidMount(){
 
-		var detailMhs = await post(`${process.env.REACT_APP_BASE_URL}/api/mahasiswa/detailMhs`, {id: this.props.location.id});
+		var detailMhs = await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa/detailMhs`, {id: this.props.location.id});
 		this.setState({mahasiswa: detailMhs})
 	}
 

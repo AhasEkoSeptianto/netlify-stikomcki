@@ -28,7 +28,7 @@ class changeName extends React.Component{
 			return null ;
 		}
 
-		let resPost = await post(`${process.env.REACT_APP_BASE_URL}/api/setting/change-name`, { userName: getCookies('user') ,newName : this.state.newName} ) 
+		let resPost = await post(`${process.env.REACT_APP_BASE_URL}api/setting/change-name`, { userName: getCookies('user') ,newName : this.state.newName} ) 
 		if (resPost.request.status === 200) {
 			setCookies('user', resPost.data.newName);
 			this.props.changeName(resPost.data.newName);

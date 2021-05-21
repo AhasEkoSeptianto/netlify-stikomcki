@@ -44,7 +44,7 @@ class addMhs extends React.Component{
 
 	submitForm = async () => {
 
-		var posts = await post(`${process.env.REACT_APP_BASE_URL}/api/mahasiswa/addMhs`, {
+		var posts = await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa/addMhs`, {
 			nama: this.state.form_nama,
 			jurusan: this.state.form_jurusan,
 			semester: this.state.form_semester,

@@ -21,10 +21,17 @@ import bg3 from "./../../asset/image/background/bg3.jpeg";
 // mycss
 import s from "./../../asset/css/home.module.css";
 
+import { get } from './../../lib/axios.js';
+
 
 class Home extends React.Component {
 
-	componentDidMount() {
+	async componentDidMount() {
+
+		let gets = await get(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`)
+
+		console.log(gets); 
+
 		document.title = "Home";
 	}
 

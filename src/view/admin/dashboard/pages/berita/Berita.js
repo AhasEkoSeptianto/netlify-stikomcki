@@ -42,7 +42,7 @@ class Master extends React.Component {
 		const formData = new FormData();
 		formData.append("file", this.state.form.file);
 		await Axios.post(
-			"https://website-stikomcki.herokuapp.com/api/broadcast/addImage",
+			`${process.env.REACT_APP_BASE_URL}api/broadcast/addImage`,
 			formData
 		)
 			.then(async (res) => {
@@ -68,7 +68,7 @@ class Master extends React.Component {
 
 	_generatedList = async () => {
 		await Axios.get(
-			"https://website-stikomcki.herokuapp.com/api/broadcast/allData"
+			`${process.env.REACT_APP_BASE_URL}api/broadcast/allData`
 		)
 			.then((res) => {
 				this.setState({ listNews: res.data.reverse() })

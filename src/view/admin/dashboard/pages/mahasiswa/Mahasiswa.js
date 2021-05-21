@@ -20,7 +20,7 @@ class Mahasiswa extends React.Component{
 	}
 
 	async componentDidMount(){
-		var allMhs = await get(`${process.env.REACT_APP_BASE_URL}/api/mahasiswa`)
+		var allMhs = await get(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`)
 		this.setState({allMhs: allMhs.data.mhs, isLoading:false});
 	}
 
