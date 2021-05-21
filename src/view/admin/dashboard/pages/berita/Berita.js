@@ -6,7 +6,6 @@ import Axios from "axios";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-
 // Cookie
 import Cookies from "universal-cookie";
 
@@ -50,7 +49,7 @@ class Master extends React.Component {
 				console.log("first = " ,res.data);
 				if (res.data.status === true) {
 					await Axios.post(
-						"https://website-stikomcki.herokuapp.com/api/broadcast/addNews",
+						`${process.env.REACT_APP_BASE_URL}/api/broadcast/addNews`,
 						{
 							judul: this.state.form.judul,
 							isiText: this.state.form.textIsi,

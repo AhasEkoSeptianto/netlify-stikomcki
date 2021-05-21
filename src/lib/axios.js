@@ -13,15 +13,12 @@ const get = async (url) => {
 }
 
 const post = async (url, data) => {
-	var resApi = [];
 	
-	await Axios.post(url, data, {
+	var resApi = await Axios.post(url, data, {
 			headers : {
 			  'Content-Type' : 'application/json',
 			  'Accept' : 'application/json'
 			}})
-		.then(res => resApi = res)
-		.catch(err => resApi = err);
 
 	return resApi;
 }

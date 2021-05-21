@@ -1,0 +1,185 @@
+.body {
+	padding: 15px;
+	color:#404040;
+}
+
+.title {
+	text-align: center;
+	margin: 10px 0px;
+	color: #404040;
+}
+
+
+.button {
+	background-color: #66b2ff;
+	padding:10px 20px;
+	color: #ffffff;
+	border:none;
+	cursor: pointer;
+	border-radius: 10%;	
+}
+
+.button:hover{
+	background-color: #3399ff;
+}
+
+/*menu header*/
+
+.menuHeader {
+	display: inline-block;
+	width: 100%;
+	margin:10px 0px;
+	align-items: center;
+}
+
+
+.filter_cont {
+	float: right;
+}
+
+.filter_cont input {
+	padding:5px;
+}
+
+.button_filter{
+	background-color: #66b2ff;
+	padding:5px;
+	color:#ffffff;
+	border:none;
+	border-radius: 0px 25% 25% 0px;
+	cursor: pointer;
+}
+
+.button_filter:hover{
+	background-color: #3399ff;
+}
+
+/*end menu header*/
+
+/*loading table*/
+
+.show {
+	opacity: 1;
+}
+
+.hidden {
+	opacity: 0;
+	height: 300px;
+}
+
+/*end loading table*/
+
+
+table {
+	width: 100%;
+	overflow-x: auto;
+	border-collapse: collapse;
+}
+
+thead {
+	background-color: #66b2ff;
+	color: #ffffff;
+}
+
+thead * {
+	padding:10px;
+}
+
+tbody *{
+	padding:  5px 10px;
+}
+
+tbody tr {
+	border:1px solid #dddddd;
+	font-size: 13px;
+}
+
+tbody .nama, tbody .jurusan, tbody .kelas {
+	width: 250px;
+}
+
+tbody .alamat {
+	white-space: normal;
+	width: 500px;
+}
+
+tbody .no, tbody .nim, tbody .semester {
+	text-align: center;
+}
+
+tbody .container_button {
+	display: flex;
+}
+
+tbody .container_button .detailButton {
+	background-color: #66b2ff;
+	border:none;
+	cursor: pointer;
+	color: #ffffff;
+}
+
+tbody .container_button .detailButton:hover {
+	background-color: #3399ff;
+}
+
+tbody .container_button .updateButton {
+	background-color: #FFA500;
+	border:none;
+	cursor: pointer;
+	color: #ffffff;
+}
+
+tbody .container_button .updateButton:hover {
+	background-color: #FF8C00;
+}
+
+tbody .container_button .deleteButton {
+	background-color: #FF3333;
+	border:none;
+	cursor: pointer;
+	color: #ffffff;
+}
+
+tbody .container_button .deleteButton:hover {
+	background-color: #ff0000;
+}
+
+.iconsButton {
+	width: 15px;
+	padding: 0px;
+}
+
+.link{
+	color: #ffffff;
+	text-decoration: none;
+	padding: 0px;
+}
+
+/*pagination*/
+.container_pagination{
+	width: 100%;
+	display: inline-block;
+}
+
+.container_arrow{
+	float: right;
+	display: flex;
+	align-items: center;
+}
+
+.container_arrow p {
+	padding:0px 5px;
+	cursor: pointer;
+	padding: 5px;
+	color: #3399ff;
+}
+
+.container_arrow p:hover {
+	color: #0066cc;
+}
+
+.arrowPagin{
+	cursor: pointer;
+	margin: 0px 5px;
+	width: 25px;
+}
