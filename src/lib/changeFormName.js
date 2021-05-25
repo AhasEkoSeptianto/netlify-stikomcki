@@ -1,5 +1,5 @@
 const changeName = (name) => {
-
+	console.log(name)
 	if (name.length >= 29) {
 		var resMaxName = maxLength(30, name);
 		return resMaxName;

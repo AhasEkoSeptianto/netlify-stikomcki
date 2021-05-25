@@ -9,6 +9,46 @@
 	color: #404040;
 }
 
+/*modal*/
+.container_modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal {
+	background-color: #F5F5F5;
+	padding:10px 20px;
+	border: 1px solid #404040;
+	color: #000000;
+}
+
+.btn_dltModal{
+	background-color: #FF3333;
+	padding:5px 10px;
+	border: none;
+	cursor: pointer;
+	color: #ffffff;
+	margin:20px 0px 5px 0px;
+	float: left;
+}
+
+.btn_cnclModal {
+	background-color: #0066cc;
+	padding:5px 10px;
+	border: none;
+	cursor: pointer;
+	color: #ffffff;
+	margin:20px 0px 5px 5px;
+	float: right;	
+}
+
+.loadingIcons {
+	height: 15px;
+	padding:0px 10px;
+}
+
+/*end modal*/
 
 .button {
 	background-color: #66b2ff;
@@ -111,22 +151,12 @@ tbody .container_button {
 	display: flex;
 }
 
-tbody .container_button .detailButton {
-	background-color: #66b2ff;
-	border:none;
-	cursor: pointer;
-	color: #ffffff;
-}
-
-tbody .container_button .detailButton:hover {
-	background-color: #3399ff;
-}
-
 tbody .container_button .updateButton {
 	background-color: #FFA500;
 	border:none;
 	cursor: pointer;
 	color: #ffffff;
+	margin-right: 2px;
 }
 
 tbody .container_button .updateButton:hover {
@@ -182,4 +212,13 @@ tbody .container_button .deleteButton:hover {
 	cursor: pointer;
 	margin: 0px 5px;
 	width: 25px;
+}
+
+.paginationPost {
+	background-color: #66b2ff;
+	color: white !important;
+}
+
+.paginationPost:hover {
+	background-color: #3399ff;
 }

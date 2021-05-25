@@ -1,11 +1,17 @@
+
+.loading{
+	display:none;
+}
+
 .body {
+	display:block;
 	padding:10px;
 }
 
 .titleHeader{ 
 	font-size: 25px;
 	text-align: center;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
  }
 
  .container_form{

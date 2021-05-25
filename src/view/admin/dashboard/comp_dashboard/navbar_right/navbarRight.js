@@ -7,7 +7,7 @@ import Berita from "./../../pages/berita/Berita.js";
 
 import Mahasiswa from "./../../pages/mahasiswa/Mahasiswa.js";
 import AddMhs from './../../pages/mahasiswa/addMhs.js';
-import DetailMhs from './../../pages/mahasiswa/detailMhs.js';
+import UpdateMhs from './../../pages/mahasiswa/updateMhs.js';
 
 import Settings from "./../../pages/settings/Settings.js";
 
@@ -33,7 +33,7 @@ class navbarRight extends React.Component {
 				
 				<Route path={`${this.state.url.path}/mahasiswa`} exact={true} component={Mahasiswa} />
 				<Route path={`${this.state.url.path}/mahasiswa/add`} exact={true} component={AddMhs} />
-				<Route path={`${this.state.url.path}/mahasiswa/detail`} exact={true} component={DetailMhs} />
+				<Route path={`${this.state.url.path}/mahasiswa/update`} exact={true} component={UpdateMhs} />
 				
 				<Route path={`${this.state.url.path}/settings`} exact={true} component={Settings} />
 			</Switch>

@@ -19,6 +19,9 @@ import { Link } from "react-router-dom";
 // lib
 import { is_auth } from './../../../lib/is_auth';
 
+// redux
+import { connect } from 'react-redux'; 
+
 class dashboard extends React.Component {
 	constructor(props) {
 		super(props);
@@ -120,7 +123,7 @@ class dashboard extends React.Component {
 							src={Img_user}
 							className={styles.iconsImage_hover}
 						/>
-						<h4>Admin</h4>
+						<h4>{this.props.user}</h4>
 						<Link
 							className={styles.link}
 							onClick={() => alert("fiture cooming soon")}
@@ -145,4 +148,10 @@ class dashboard extends React.Component {
 	}
 }
 
-export default dashboard;
+const mapStateToProps = state => {
+	return {
+		user: state.user,
+	}
+}
+
+export default connect(mapStateToProps, null)(dashboard);

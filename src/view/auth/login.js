@@ -52,7 +52,7 @@ class login extends React.Component {
 				
 				showerr.style.display = "none";
 
-				this.props.history.push('/');
+				window.location.href = `dashboard`;
 
 			} else {
 				showerr.style.display = "flex";
