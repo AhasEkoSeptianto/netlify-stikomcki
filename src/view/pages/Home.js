@@ -28,7 +28,7 @@ class Home extends React.Component {
 
 	async componentDidMount() {
 
-		let gets = await get(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`)
+		let gets = get(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`)
 
 		console.log(gets); 
 
