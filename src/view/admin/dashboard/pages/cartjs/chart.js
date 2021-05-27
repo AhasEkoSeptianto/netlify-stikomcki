@@ -56,7 +56,9 @@ class chart extends React.Component{
     
     render(){
         return (
-                <canvas id="myChart" width="100%"></canvas>
+            <div className='w-full'>
+                <canvas id="myChart"></canvas>
+            </div>
        )
     }
 }
