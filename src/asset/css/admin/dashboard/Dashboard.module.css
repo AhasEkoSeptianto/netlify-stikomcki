@@ -1,8 +1,42 @@
 .body {
-	color: #606060;
-	height: 100vh;
+
+}
+
+
+/*header*/
+.cont_header {
+	display: flex;
+	padding: 15px;
+}
+
+.cardHeader {
+	display: flex;
+	align-items: center;
+	color: #696969;
+}
+
+.cont_head_icons {
+	width: 50%;
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	font-weight: bold;
+	padding:15px 0px;
+
 }
+
+.cont_info_head {
+	width: 50%;
+}
+
+.icons_headers {
+	width: 50px;
+}
+
+/*end header*/
+
+/*calendar*/
+
+.calendar {
+	width: 30%;
+}
+
+/*end calendar*/
