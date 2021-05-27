@@ -56,7 +56,7 @@ class chart extends React.Component{
     
     render(){
         return (
-                <canvas id="myChart"></canvas>
+                <canvas id="myChart" width="100%"></canvas>
        )
     }
 }
