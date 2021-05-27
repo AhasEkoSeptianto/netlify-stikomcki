@@ -51,8 +51,8 @@ class login extends React.Component {
 				setCookies('auth-token', is_login.data.token);
 				
 				showerr.style.display = "none";
-
-				window.location.href = `dashboard`;
+				this.props.history.push('/');
+// 				window.location.href = `dashboard`;
 
 			} else {
 				showerr.style.display = "flex";
