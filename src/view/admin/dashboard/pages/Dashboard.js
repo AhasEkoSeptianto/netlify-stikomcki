@@ -14,6 +14,8 @@ import 'react-calendar/dist/Calendar.css';
 // lib
 import { get, post } from './../../../../lib/axios.js';
 
+import style from './Dashboard.module.css';
+
 class Dashboard extends React.Component {
 
 	constructor(props){
@@ -72,7 +74,7 @@ class Dashboard extends React.Component {
 					</Grid>
 
 					<Grid item xs={12} lg={4}>
-						<Calendar onChange={() => this.setState({date: new Date()})} value={this.state.date} className={s.calendar} />	
+						<Calendar className={style.calendar} onChange={() => this.setState({date: new Date()})} value={this.state.date} className={s.calendar} />	
 					</Grid>
 
 				</Grid>
