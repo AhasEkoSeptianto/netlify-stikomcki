@@ -6,8 +6,16 @@ import Axios from "axios";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+import { Card, Modal, Backdrop, Fade, Button } from '@material-ui/core';
+
 // Cookie
 import Cookies from "universal-cookie";
+
+// lib
+import { post } from './../../../../../lib/axios.js';
+
+
+var cookie = new Cookies();
 
 class Master extends React.Component {
 	constructor(props) {
@@ -18,6 +26,13 @@ class Master extends React.Component {
 				file: null,
 				textIsi: null,
 			},
+			modal: {
+				open:false,
+				id: null,
+				title: null,
+				image: null,
+				content: null,
+			},
 			navCreate: true,
 			liveImage: null,
 			listNews: [],
@@ -26,43 +41,34 @@ class Master extends React.Component {
 	}
 
 	_onChangeFile = (e) => {
-		console.log(this.state.form);
 		const file = e.target.files[0];
 		this.setState({ form: { ...this.state.form, file: file } });
 
 		const path = URL.createObjectURL(file);
-		// console.log("path = ", path);
 		this.setState({ liveImage: path });
 	};
 
 	_btnSave = async () => {
 
 		this.setState({isLoading:true})// loading true
-
+		
 		const formData = new FormData();
 		formData.append("file", this.state.form.file);
-		await Axios.post(
-			`${process.env.REACT_APP_BASE_URL}api/broadcast/addImage`,
-			formData
-		)
+		
+		await post(`${process.env.REACT_APP_BASE_URL}api/broadcast/addImage`, formData)
 			.then(async (res) => {
-				console.log("first = " ,res.data);
 				if (res.data.status === true) {
-					await Axios.post(
-						`${process.env.REACT_APP_BASE_URL}/api/broadcast/addNews`,
-						{
-							judul: this.state.form.judul,
-							isiText: this.state.form.textIsi,
-							imgUrl: res.data.path,
-							token: new Cookies().get('auth-token'),
-						}
-					)
-						.then((res) => alert(res))
-						.catch((err) => alert(err));
+					await post(`${process.env.REACT_APP_BASE_URL}api/broadcast/addNews`, {
+						judul: this.state.form.judul,
+						isiText: this.state.form.textIsi,
+						imgUrl: res.data.path,
+						token: cookie.get('auth-token'),
+					}).then(res => alert('success')).catch(err => alert(err));
 				}
 			})
-			.catch((err) => alert(err));
-		await this._generatedList();
+
+		this._generatedList();
+		
 		this.setState({isLoading:false});
 	};
 
@@ -75,6 +81,14 @@ class Master extends React.Component {
 			})
 			.catch((err) => console.log(err));
 	};
+
+	deleteNews = async () => {
+		this.setState({ modal: { ...this.state.modal, open: false } });
+		let resPost = await post(`${process.env.REACT_APP_BASE_URL}api/broadcast/delete`, { id: this.state.modal.id, token: cookie.get('auth-token') })
+		if (resPost.data.result === 'success'){
+			this._generatedList();
+		}
+	}
 
 	componentDidMount() {
 		this._generatedList();
@@ -104,6 +118,7 @@ class Master extends React.Component {
 						<div className={styles.inputJudul}>
 							<p>Judul</p>
 							<textarea
+								className='border'
 								type="text"
 								onChange={(e) =>
 									this.setState({
@@ -135,6 +150,7 @@ class Master extends React.Component {
 							<p>Content </p>
 							<textarea
 								type="text"
+								className='border'
 								onChange={(e) =>
 									this.setState({
 										form: {
@@ -163,20 +179,52 @@ class Master extends React.Component {
 							: styles.cont_create_active
 					}
 				>
+
+					<Modal
+				        aria-labelledby="transition-modal-title"
+				        aria-describedby="transition-modal-description"
+				        className={'classes.modal'}
+				        open={this.state.modal.open}
+				        onClose={() => this.setState({modal: { ...this.state.modal, open:false }})}
+				        closeAfterTransition
+				        BackdropComponent={Backdrop}
+				        BackdropProps={{
+				          timeout: 500,
+				        }}
+				      >
+				        <Fade in={this.state.modal.open}>
+				        	<div className='flex justify-center items-center h-screen'>
+					        	<div className='w-1/3 mx-auto bg-white p-5 overflow-y-auto h-full'>
+					        		<p className='text-2xl text-center font-bold'>{this.state.modal.title}</p>
+					        		<img src={`${process.env.REACT_APP_BASE_URL + this.state.modal.image}`} className='w-11/12 mx-auto my-5' />
+					        		<p className='mb-5'>{this.state.modal.content}</p>
+					        		
+					        		<div className='flex justify-end my-5'>
+					        			<div>
+							        		<Button variant="contained" color="secondary" onClick={this.deleteNews}>Delete</Button>
+					        			</div>
+					        			<div className='ml-5'>
+							        		<Button variant="contained" color="primary" onClick={
+							        			() => this.setState({modal: { ...this.state.modal, open:false }})
+							        			}>Close</Button>
+					        			</div>
+					        		</div>
+
+					        	</div>
+				        	</div>
+				        </Fade>
+				      </Modal>
+
 					<div className={styles.cont_list}>
 						{this.state.listNews.map((val, index) => (
-							<div className={styles.card_list}>
-								<p className={styles.isiText}>{val.title}</p>
-								<img
-									alt="image"
-									src={
-										"https://website-stikomcki.herokuapp.com/" +
-										val.imageUrl
-									}
-									className={styles.img_list}
-								/>
-								<p className={styles.isiText}>{val.content}</p>
-							</div>
+
+							<Card className='w-1/3 p-5 cursor-pointer hover:shadow-xl ' onClick={
+								() => this.setState({modal: {id:val._id, title: val.title, image: val.imageUrl, content: val.content, open: true }})
+								}>
+								<h1 className='overflow-hidden text-2xl text-center'>{val.title}</h1>
+								<img src={`${process.env.REACT_APP_BASE_URL + val.imageUrl}`} className='w-11/12 mx-auto my-5' />
+								<p className='max-h-20'>{val.content}</p>
+							</Card>
 						))}
 					</div>
 				</div>

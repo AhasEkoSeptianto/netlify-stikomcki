@@ -10,7 +10,6 @@ class chart extends React.Component{
 
             var getMhs = await get(`${process.env.REACT_APP_BASE_URL}api/mhs-statistik`);
 
-            console.log(getMhs)
 
             var crnYears = new Date().getFullYear(); 
 

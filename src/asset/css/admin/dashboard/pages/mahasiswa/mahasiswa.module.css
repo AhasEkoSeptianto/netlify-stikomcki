@@ -149,6 +149,8 @@ tbody .no, tbody .nim, tbody .semester {
 
 tbody .container_button {
 	display: flex;
+	width: 80px;
+	justify-content: center;
 }
 
 tbody .container_button .updateButton {
@@ -175,7 +177,7 @@ tbody .container_button .deleteButton:hover {
 }
 
 .iconsButton {
-	width: 15px;
+	width: 30px;
 	padding: 0px;
 }
 

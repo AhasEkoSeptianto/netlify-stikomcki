@@ -37,17 +37,17 @@ class navbar_left extends React.Component {
 					/>
 				</div>
 				{/* end icons untuk navbar mobile */}
-				<div className={styles.cont_headNav}>
-					<h4 className={styles.headNav_top}>
+				<div className='text-center mt-5'>
+					<h4 className='text-red-400 text-sm font-bold'>
 						Sekolah Tinggi Ilmu Komputer
 					</h4>
-					<h4 className={styles.headNav_bot}>
+					<h4 className='text-blue-400 text-sm font-bold'>
 						Cipta Karya Informatika Kampus.D
 					</h4>
 				</div>
 				{/* end container header // comp profile user */}
-				<div className={styles.cont_profile}>
-					<img alt="user" src="/image/icons/user.svg" className={styles.img_user} />
+				<div className='mx-auto text-center my-5'>
+					<img alt="user" src="/image/icons/user.svg" className='w-1/3 mx-auto' />
 					<p>{this.props.user}</p>
 				</div>
 				{/* end comp profile user */}

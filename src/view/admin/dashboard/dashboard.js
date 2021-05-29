@@ -13,6 +13,9 @@ import IconNavbar from "./../../../asset/image/icons/navbar.png";
 import NavLeft from "./comp_dashboard/navbar_left/navbarLeft.js";
 import NavRight from "./comp_dashboard/navbar_right/navbarRight.js";
 
+// material ui
+import { Grid } from '@material-ui/core';
+
 // router
 import { Link } from "react-router-dom";
 
@@ -27,7 +30,7 @@ class dashboard extends React.Component {
 		super(props);
 		this.state = {
 			uri: this.props.match,
-			navMobileClick: false,
+			navMobile: 2,
 			profileClick: false,
 		};
 	}
@@ -49,17 +52,11 @@ class dashboard extends React.Component {
 
 	// deteksi apakah user menekan btn nav pada mobile jikaiya maka ketika diconvert ke desktop akan menjadikan normal
 	_detectNavDesktop = (event) => {
-		if (
-			event.target.innerWidth > 499 &&
-			this.state.navMobileClick === true
-		) {
-			document.getElementById("myNav").style.width = "25%";
-		}
-		if (
-			event.target.innerWidth < 500 &&
-			this.state.navMobileClick === true
-		) {
-			document.getElementById("myNav").style.width = "0%";
+
+		if ( event.target.innerWidth < 1000 ) {
+			this.setState({navMobile: 0})
+		} else {
+			this.setState({navMobile: 2})
 		}
 	};
 
@@ -67,19 +64,27 @@ class dashboard extends React.Component {
 		let isAuth = is_auth();
 		isAuth ? console.log('user loggend') : this.props.history.push('/') ;
 
-		window.addEventListener("resize", this._detectNavDesktop);
+
+		// display for mobile and desktop
+		if (window.screen.width < 1000) {
+			this.setState({navMobile: 0})
+		} else {
+			window.addEventListener("resize", this._detectNavDesktop);
+		}
+
 	}
 
 	render() {
 		return (
-			<div className={styles.body}>
-				<div className={styles.cont_left} id="myNav">
+			<Grid container spacing={1} className='h-full'>
+				<Grid item xs={this.state.navMobile} lg={2} className={this.state.navMobile === 0 ? 'hidden' :  `shadow h-screen`} >
 					{/* navbar kiri window */}
 					<NavLeft />
-				</div>
-				<div className={styles.cont_right}>
+				</Grid>
+
+				<Grid item xs={12} lg={10} className='overflow-y-auto'>
 					{/* component bagian kanan window */}
-					<div className={styles.comp_rightTop}>
+					<div className={`${styles.comp_rightTop}`}>
 						{/* bagian awal headaer kanan */}
 						<div className={styles.cont_headerLeft}>
 							<img
@@ -142,8 +147,8 @@ class dashboard extends React.Component {
 					<NavRight uri={this.state.uri} />
 					{/* end window untuk body bagian kanan */}
 					{/* end component bagian kanan window */}
-				</div>
-			</div>
+				</Grid>
+			</Grid>
 		);
 	}
 }

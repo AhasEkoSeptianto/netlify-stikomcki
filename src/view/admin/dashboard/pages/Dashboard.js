@@ -71,9 +71,9 @@ class Dashboard extends React.Component {
 						<Chart />			
 					</Grid>
 
-					{/* <Grid item xs={12} lg={4}> */}
-					{/* 	<Calendar onChange={() => this.setState({date: new Date()})} value={this.state.date} className={s.calendar} />	 */}
-					{/* </Grid> */}
+					<Grid item xs={12} lg={4}>
+						<Calendar onChange={() => this.setState({date: new Date()})} value={this.state.date} className={s.calendar} />	
+					</Grid>
 
 				</Grid>
 

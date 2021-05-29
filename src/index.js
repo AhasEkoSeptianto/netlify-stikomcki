@@ -12,6 +12,9 @@ import rootReducer from "./redux/store.js";
 // router
 import { BrowserRouter as Route } from "react-router-dom";
 
+// tailwind css
+import './index.css';
+
 const store = createStore(rootReducer);
 
 ReactDOM.render(

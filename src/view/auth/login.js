@@ -74,7 +74,7 @@ class login extends React.Component {
 			<div className={s.bg}>
 				<div className={s.container_login}>
 					<div className={s.header_login}>
-						<img alt="logo" src={Logo} className={s.img_logo} />
+						<img alt="logo" src={Logo} className={`${s.img_logo} mx-auto`} />
 						<p className={s.text_stikom}>StikomCKI.D</p>
 					</div>
 					<div
