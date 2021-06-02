@@ -19,10 +19,6 @@ import { connect } from 'react-redux';
 
 class navbar_left extends React.Component {
 
-	_btnNavMobile = () => {
-		document.getElementById("myNav").style.width = "0%";
-	};
-
 	render() {
 		return (
 			<div >

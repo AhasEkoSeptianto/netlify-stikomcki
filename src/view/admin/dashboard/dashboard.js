@@ -31,7 +31,7 @@ class dashboard extends React.Component {
 		super(props);
 		this.state = {
 			uri: this.props.match,
-			navMobile: 6,
+			navMobile: 2,
 			profileClick: false,
 		};
 	}
@@ -50,16 +50,6 @@ class dashboard extends React.Component {
 		this.props.history.push("/");
 	};
 
-	// deteksi apakah user menekan btn nav pada mobile jikaiya maka ketika diconvert ke desktop akan menjadikan normal
-	_detectNavDesktop = (event) => {
-
-		if ( event.target.innerWidth < 1000 ) {
-			this.setState({navMobile: 0})
-		} else {
-			this.setState({navMobile: 2})
-		}
-	};
-
 	componentDidMount() {
 		let isAuth = is_auth();
 		isAuth ? console.log('user loggend') : this.props.history.push('/') ;
@@ -67,9 +57,9 @@ class dashboard extends React.Component {
 
 		// display for mobile and desktop
 		if (window.screen.width < 1000) {
-			this.setState({navMobile: 6})
+			this.setState({navMobile: 0})
 		} else {
-			window.addEventListener("resize", this._detectNavDesktop);
+			document.getElementById('icon_nav').setAttribute('class','hidden')
 		}
 
 	}
@@ -77,12 +67,13 @@ class dashboard extends React.Component {
 	render() {
 		return (
 			<Grid container spacing={1} className='h-full'>
-				<Grid item xs={this.state.navMobile} lg={2} className={this.state.navMobile === 0 ? 'hidden' :  `shadow h-full z-20 bg-white absolute`} id='myNav' >
+				<Grid item xs={this.state.navMobile} lg={4} className={this.state.navMobile === 0 ? 'hidden relative' :  `shadow h-full z-20 bg-white absolute`} id='myNav' >
 					<div className='bg-blue-300 flex justify-end'>
 						<img
 							alt="icons"
 							src={IconsCloceNav}
-							className='w-14 p-4'
+							className='w-14 p-5'
+							id='icon_nav'
 							onClick={() => this._btnNavMobile()}
 						/>
 					</div>
@@ -90,7 +81,7 @@ class dashboard extends React.Component {
 					<NavLeft />
 				</Grid>
 
-				<Grid item xs={12} lg={10} className='overflow-y-auto'>
+				<Grid item xs={12} lg={10} className='overflow-y-auto absolute right-0 w-full'>
 					{/* component bagian kanan window */}
 					<div className={`${styles.comp_rightTop}`}>
 						{/* bagian awal headaer kanan */}
