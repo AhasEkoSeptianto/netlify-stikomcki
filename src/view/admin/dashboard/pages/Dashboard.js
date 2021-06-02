@@ -36,50 +36,44 @@ class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<div className={s.body}>
+			<Grid container spacing={2} className='flex p-2 h-full'>
+				<Grid item xs={12} lg={6}>
+					<Card className={s.cardHeader}>
+						<div className={s.cont_head_icons}>
+							<img src='/image/icons/mahasiswa.svg' className={s.icons_headers} />
+						</div>
 
-				<Grid container spacing={5} className={s.cont_header}>
-					<Grid item xs={12} lg={6}>
-						<Card className={s.cardHeader}>
-							<div className={s.cont_head_icons}>
-								<img src='/image/icons/mahasiswa.svg' className={s.icons_headers} />
-							</div>
+						<div>
+							<p>Mahasiswa</p>
+							<p>{this.state.mahasiswa}</p>
+						</div>
 
-							<div>
-								<p>Mahasiswa</p>
-								<p>{this.state.mahasiswa}</p>
-							</div>
-
-						</Card>
-					</Grid>
-
-					<Grid item xs={12} lg={6}>
-						<Card className={s.cardHeader}>
-							<div className={s.cont_head_icons}>
-								<img src='/image/icons/visitor.svg' className={s.icons_headers} />
-							</div>
-
-							<div className={s.cont_info_head}>
-								<p>Visitor Page</p>
-								<p>{this.state.visitor} this month</p>
-							</div>
-
-						</Card>
-					</Grid>
-
-					<Grid item xs={12} lg={8}>			
-						<Chart />			
-					</Grid>
-
-					<Grid item xs={12} lg={4}>
-							
-					</Grid>
-
+					</Card>
 				</Grid>
 
+				<Grid item xs={12} lg={6}>
+					<Card className={s.cardHeader}>
+						<div className={s.cont_head_icons}>
+							<img src='/image/icons/visitor.svg' className={s.icons_headers} />
+						</div>
 
+						<div className={s.cont_info_head}>
+							<p>Visitor Page</p>
+							<p>{this.state.visitor} this month</p>
+						</div>
 
-			</div>
+					</Card>
+				</Grid>
+
+				<Grid item xs={12} lg={8}>			
+					<Chart />			
+				</Grid>
+
+				<Grid item xs={12} lg={4}>
+						
+				</Grid>
+
+			</Grid>
 		);
 	}
 }

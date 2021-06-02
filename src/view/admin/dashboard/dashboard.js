@@ -8,6 +8,7 @@ import Img_user from "./../../../asset/image/user/user.png";
 
 // icons
 import IconNavbar from "./../../../asset/image/icons/navbar.png";
+import IconsCloceNav from "./../../../asset/image/icons/close.png";
 
 // component nav
 import NavLeft from "./comp_dashboard/navbar_left/navbarLeft.js";
@@ -30,14 +31,13 @@ class dashboard extends React.Component {
 		super(props);
 		this.state = {
 			uri: this.props.match,
-			navMobile: 2,
+			navMobile: 6,
 			profileClick: false,
 		};
 	}
 
 	_btnNavMobile = () => {
-		document.getElementById("myNav").style.width = "50%";
-		this.setState({ navMobileClick: true });
+		this.state.navMobile === 6 ? this.setState({navMobile: 0}) : this.setState({navMobile: 6}) ;
 	};
 
 	_btnProfile = () => {
@@ -67,7 +67,7 @@ class dashboard extends React.Component {
 
 		// display for mobile and desktop
 		if (window.screen.width < 1000) {
-			this.setState({navMobile: 0})
+			this.setState({navMobile: 6})
 		} else {
 			window.addEventListener("resize", this._detectNavDesktop);
 		}
@@ -77,7 +77,15 @@ class dashboard extends React.Component {
 	render() {
 		return (
 			<Grid container spacing={1} className='h-full'>
-				<Grid item xs={this.state.navMobile} lg={2} className={this.state.navMobile === 0 ? 'hidden' :  `shadow h-screen`} >
+				<Grid item xs={this.state.navMobile} lg={2} className={this.state.navMobile === 0 ? 'hidden' :  `shadow h-full z-20 bg-white absolute`} id='myNav' >
+					<div className='bg-blue-300 flex justify-end'>
+						<img
+							alt="icons"
+							src={IconsCloceNav}
+							className='w-14 p-4'
+							onClick={() => this._btnNavMobile()}
+						/>
+					</div>
 					{/* navbar kiri window */}
 					<NavLeft />
 				</Grid>

@@ -19,11 +19,6 @@ class navbarRight extends React.Component {
 			url: this.props.uri,
 		};
 	}
-
-	componentDidMount() {
-		// alert(JSON.stringify(this.state.url));
-	}
-
 	render() {
 		return (
 			<Switch>

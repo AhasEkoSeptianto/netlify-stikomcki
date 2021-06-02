@@ -25,17 +25,7 @@ class navbar_left extends React.Component {
 
 	render() {
 		return (
-			<div className={styles.body}>
-				{/* container header */}
-				{/* icons untuk navbar mobile */}
-				<div className={styles.cont_navMobile}>
-					<img
-						alt="icons"
-						src={IconsCloceNav}
-						className={styles.icons_nav}
-						onClick={() => this._btnNavMobile()}
-					/>
-				</div>
+			<div >
 				{/* end icons untuk navbar mobile */}
 				<div className='text-center mt-5'>
 					<h4 className='text-red-400 text-sm font-bold'>
