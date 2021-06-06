@@ -41,7 +41,7 @@ class dashboard extends React.Component {
 		var nav = document.getElementById('nav_dashboard');
 		if (this.state.navMobileOpen) {
 			this.setState({navMobileOpen: false});
-			nav.setAttribute('class', 'w-1/2 fixed left-0 bg-white h-screen z-50');
+			nav.setAttribute('class', 'w-30 fixed left-0 bg-white h-screen z-50');
 		} else {
 			this.setState({navMobileOpen: true});
 			nav.setAttribute('class', 'w-0 fixed left-0 bg-white overflow-hidden z-50');
