@@ -61,7 +61,7 @@ class changeName extends React.Component{
 
 				<div className={styles.formSetting}>
 					<p>Name</p>
-					<input placeholder="name" onChange={(e) => this.setState({newName: e.target.value})} />
+					<input placeholder="name" onChange={(e) => this.setState({newName: e.target.value})} className='border' />
 					<button onClick={this.submit}>Save</button>
 				</div>
 			</Fragment>

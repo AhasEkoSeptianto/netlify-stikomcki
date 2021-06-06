@@ -19,9 +19,13 @@ import { connect } from 'react-redux';
 
 class navbar_left extends React.Component {
 
+	constructor(props){
+		super(props);
+	}
+
 	render() {
 		return (
-			<div >
+			<div>
 				{/* end icons untuk navbar mobile */}
 				<div className='text-center mt-5'>
 					<h4 className='text-red-400 text-sm font-bold'>
@@ -41,7 +45,7 @@ class navbar_left extends React.Component {
 				{/* comp_Menu */}
 
 				{router_nav.map((val, index) => (
-					<Link to={val.link} className={styles.cont_menu}>
+					<Link to={val.link} className={this.props.dashboardNav === val.link ? `${styles.cont_menu} bg-blue-100` : styles.cont_menu }>
 						<img alt={val.name} src={val.icons} className={styles.icons_menu} />
 						<p>{val.name}</p>
 					</Link>
@@ -57,6 +61,7 @@ class navbar_left extends React.Component {
 const mapStateToProps = state => {
 	return {
 		user: state.user,
+		dashboardNav: state.dashboardNav,
 	}
 }
 

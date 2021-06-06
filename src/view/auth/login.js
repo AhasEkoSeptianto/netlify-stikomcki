@@ -49,14 +49,14 @@ class login extends React.Component {
 
 				setCookies('user', is_login.data.name);
 				setCookies('auth-token', is_login.data.token);
-				
+
 				showerr.style.display = "none";
-				this.props.history.push('/');
+				this.props.history.push('/dashboard');
 // 				window.location.href = `dashboard`;
 
 			} else {
 				showerr.style.display = "flex";
-			}		
+			}
 		} else {
 			console.log("field form is valid");
 		}
@@ -98,7 +98,7 @@ class login extends React.Component {
 								type="text"
 								name="username"
 								placeholder="username"
-								className={s.form_user}
+								className={`${s.form_user} outline-none`}
 							/>
 						</div>
 						<div className={s.password} id="password">
@@ -108,7 +108,7 @@ class login extends React.Component {
 								type="password"
 								name="password"
 								placeholder="password"
-								className={s.form_user}
+								className={`${s.form_user} outline-none`}
 							/>
 						</div>
 						<button

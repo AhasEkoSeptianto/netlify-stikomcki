@@ -14,6 +14,8 @@ import 'react-calendar/dist/Calendar.css';
 // lib
 import { get, post } from './../../../../lib/axios.js';
 
+import { connect } from 'react-redux';
+
 class Dashboard extends React.Component {
 
 	constructor(props){
@@ -25,7 +27,12 @@ class Dashboard extends React.Component {
 		}
 	}
 
+
 	async componentDidMount(){
+
+		this.props.changeNav(this.props.location.pathname);
+
+
 		let Visitor = await get(`${process.env.REACT_APP_BASE_URL}api/getvisitor`);
 		this.setState({visitor: Visitor.data.visitor});
 
@@ -36,7 +43,7 @@ class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<Grid container spacing={2} className='flex p-2 h-full'>
+			<Grid container spacing={0} className='flex p-2 h-full'>
 				<Grid item xs={12} lg={6}>
 					<Card className={s.cardHeader}>
 						<div className={s.cont_head_icons}>
@@ -65,12 +72,12 @@ class Dashboard extends React.Component {
 					</Card>
 				</Grid>
 
-				<Grid item xs={12} lg={8}>			
-					<Chart />			
+				<Grid item xs={12} lg={8}>
+					<Chart />
 				</Grid>
 
 				<Grid item xs={12} lg={4}>
-						
+
 				</Grid>
 
 			</Grid>
@@ -78,4 +85,10 @@ class Dashboard extends React.Component {
 	}
 }
 
-export default Dashboard;
+const mapDispatchToProps = dispatch => {
+	return {
+		changeNav : (nav) => dispatch({type:'change_navDashboard', nav:nav}),
+	}
+}
+
+export default connect(null, mapDispatchToProps)(Dashboard);

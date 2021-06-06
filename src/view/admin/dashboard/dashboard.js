@@ -31,13 +31,21 @@ class dashboard extends React.Component {
 		super(props);
 		this.state = {
 			uri: this.props.match,
-			navMobile: 2,
+			isMobile: false,
+			navMobileOpen: false,
 			profileClick: false,
 		};
 	}
 
 	_btnNavMobile = () => {
-		this.state.navMobile === 6 ? this.setState({navMobile: 0}) : this.setState({navMobile: 6}) ;
+		var nav = document.getElementById('nav_dashboard');
+		if (this.state.navMobileOpen) {
+			this.setState({navMobileOpen: false});
+			nav.setAttribute('class', 'w-1/2 fixed left-0 bg-white h-screen z-50');
+		} else {
+			this.setState({navMobileOpen: true});
+			nav.setAttribute('class', 'w-0 fixed left-0 bg-white overflow-hidden z-50');
+		}
 	};
 
 	_btnProfile = () => {
@@ -50,29 +58,38 @@ class dashboard extends React.Component {
 		this.props.history.push("/");
 	};
 
+	changeDeviceWidth = () => {
+		let nav = document.getElementById('nav_dashboard');
+		let height = window.innerHeight;
+		let width = window.innerWidth;
+
+		console.log(width);
+
+		if (width < 600) {
+			this.setState({isMobile: true});
+		} else {
+			this.setState({isMobile: false});
+		}
+
+	}
+
 	componentDidMount() {
 		let isAuth = is_auth();
 		isAuth ? console.log('user loggend') : this.props.history.push('/') ;
-
-
-		// display for mobile and desktop
-		if (window.screen.width < 1000) {
-			this.setState({navMobile: 0})
-		} else {
-			document.getElementById('icon_nav').setAttribute('class','hidden')
-		}
+		this.changeDeviceWidth();
+		window.addEventListener('resize', this.changeDeviceWidth);
 
 	}
 
 	render() {
 		return (
-			<Grid container spacing={1} className='h-full'>
-				<Grid item xs={this.state.navMobile} lg={4} className={this.state.navMobile === 0 ? 'hidden relative' :  `shadow h-full z-20 bg-white absolute`} id='myNav' >
+			<Grid container spacing={0} className='h-full'>
+				<Grid item sm={3} lg={2} id='nav_dashboard' className={this.state.isMobile ? 'fixed w-0 overflow-hidden left-0 bg-white h-screen z-50' : 'static border-r border-gray-100'}>
 					<div className='bg-blue-300 flex justify-end'>
 						<img
 							alt="icons"
 							src={IconsCloceNav}
-							className='w-14 p-5'
+							className={this.state.isMobile ? 'w-14 p-4 cursor-pointer' : 'w-0'}
 							id='icon_nav'
 							onClick={() => this._btnNavMobile()}
 						/>
@@ -81,7 +98,7 @@ class dashboard extends React.Component {
 					<NavLeft />
 				</Grid>
 
-				<Grid item xs={12} lg={10} className='overflow-y-auto absolute right-0 w-full'>
+				<Grid item sm={9} lg={10} className={this.state.isMobile ? 'w-full' : 'w-10/12' }>
 					{/* component bagian kanan window */}
 					<div className={`${styles.comp_rightTop}`}>
 						{/* bagian awal headaer kanan */}
@@ -89,7 +106,7 @@ class dashboard extends React.Component {
 							<img
 								alt="icons"
 								src={IconNavbar}
-								className={styles.icons_nav}
+								className={this.state.isMobile ? 'h-1/2 p-1 ml-3 cursor-pointer' : 'h-0'}
 								onClick={() => this._btnNavMobile()}
 							/>
 						</div>

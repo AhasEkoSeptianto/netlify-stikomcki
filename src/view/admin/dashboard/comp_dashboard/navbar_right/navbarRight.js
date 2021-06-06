@@ -23,13 +23,10 @@ class navbarRight extends React.Component {
 		return (
 			<Switch>
 				<Route path={this.state.url.path} exact={true} component={Dashboard} />
-				
 				<Route path={`${this.state.url.path}/berita`} exact={true} component={Berita} />
-				
 				<Route path={`${this.state.url.path}/mahasiswa`} exact={true} component={Mahasiswa} />
 				<Route path={`${this.state.url.path}/mahasiswa/add`} exact={true} component={AddMhs} />
 				<Route path={`${this.state.url.path}/mahasiswa/update`} exact={true} component={UpdateMhs} />
-				
 				<Route path={`${this.state.url.path}/settings`} exact={true} component={Settings} />
 			</Switch>
 		);

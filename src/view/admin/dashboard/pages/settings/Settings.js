@@ -6,16 +6,22 @@ import styles from "./../../../../../asset/css/admin/dashboard/pages/settings.mo
 import ChangeName from './form_setting/changeName';
 import ChangeAccount from './form_setting/changeAccount';
 
+import { connect } from 'react-redux';
+
 class Settings extends React.Component {
 
 	Exit = () => {
 		this.props.history.push("/");
 	}
 
+	componentDidMount(){
+		this.props.changeNav(this.props.location.pathname);
+	}
+
 	render() {
 		return (
 			<div className={styles.body}>
-				
+
 				<h1 className={styles.titleHead}>Setting</h1>
 
 				{/* settings profile */}
@@ -24,7 +30,7 @@ class Settings extends React.Component {
 
 				<p className={styles.titleSetting}>Account</p>
 				<ChangeAccount />
-				
+
 				<button className={styles.buttonLogout} onClick={this.Exit}>Exit</button>
 
 			</div>
@@ -32,4 +38,10 @@ class Settings extends React.Component {
 	}
 }
 
-export default Settings;
+const mapDispatchToProps = dispatch => {
+	return {
+		changeNav : (nav) => dispatch({type:'change_navDashboard', nav:nav}),
+	}
+}
+
+export default connect(null, mapDispatchToProps)(Settings);

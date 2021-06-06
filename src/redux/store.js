@@ -3,6 +3,7 @@ import { getCookies } from './../lib/cookie';
 //  create redux
 const initialState = {
 	user: getCookies('user'),
+	dashboardNav: '',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -13,7 +14,14 @@ const rootReducer = (state = initialState, action) => {
 				user: action.user,
 			};
 		}
-		
+
+		case "change_navDashboard": {
+			return {
+				...state,
+				dashboardNav: action.nav,
+			}
+		}
+
 		default : {
 			return state;
 		}

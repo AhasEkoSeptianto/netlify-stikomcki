@@ -4,22 +4,15 @@ import styles from "./../../../../../../asset/css/admin/dashboard/pages/settings
 
 class changeAccount extends React.Component{
 
-	// constructor(props){
-	// 	super(props);
-	// 	this.state = {
-	// 		
-	// 	}
-	// }
-
 	render(){
 		return(
 			<div className={styles.formSetting}>
 				<p>Username</p>
-				<input placeholder="Username" />
+				<input placeholder="Username" className='border' />
 				<button>Save</button>
 
 				<p>Password</p>
-				<input placeholder="password" />
+				<input placeholder="password" className='border' />
 				<button>Save</button>
 			</div>
 			)

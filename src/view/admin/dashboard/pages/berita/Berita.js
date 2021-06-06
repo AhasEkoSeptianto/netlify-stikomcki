@@ -15,6 +15,8 @@ import Cookies from "universal-cookie";
 import { post } from './../../../../../lib/axios.js';
 
 
+import { connect } from 'react-redux';
+
 var cookie = new Cookies();
 
 class Master extends React.Component {
@@ -51,10 +53,10 @@ class Master extends React.Component {
 	_btnSave = async () => {
 
 		this.setState({isLoading:true})// loading true
-		
+
 		const formData = new FormData();
 		formData.append("file", this.state.form.file);
-		
+
 		await post(`${process.env.REACT_APP_BASE_URL}api/broadcast/addImage`, formData)
 			.then(async (res) => {
 				if (res.data.status === true) {
@@ -68,7 +70,7 @@ class Master extends React.Component {
 			})
 
 		this._generatedList();
-		
+
 		this.setState({isLoading:false});
 	};
 
@@ -92,16 +94,17 @@ class Master extends React.Component {
 
 	componentDidMount() {
 		this._generatedList();
+		this.props.changeNav(this.props.location.pathname);
 	}
 
 	render() {
 		return (
 			<div className={styles.body}>
 				<div className={styles.nav_berita}>
-					<p onClick={() => this.setState({ navCreate: true })} className={styles.create_btn}>
+					<p onClick={() => this.setState({ navCreate: true })} className={this.state.navCreate ? `${styles.create_btn} bg-blue-100` : styles.create_btn}>
 						create
 					</p>
-					<p onClick={() => this.setState({ navCreate: false })}>
+					<p onClick={() => this.setState({ navCreate: false })} className={this.state.navCreate ? styles.create_btn : `${styles.create_btn} bg-blue-100` }>
 						list berita
 					</p>
 				</div>
@@ -194,11 +197,11 @@ class Master extends React.Component {
 				      >
 				        <Fade in={this.state.modal.open}>
 				        	<div className='flex justify-center items-center h-screen'>
-					        	<div className='w-1/3 mx-auto bg-white p-5 overflow-y-auto h-full'>
+					        	<div className='w-10/12 lg:w-1/3 mx-auto bg-white p-5 overflow-y-auto h-full'>
 					        		<p className='text-2xl text-center font-bold'>{this.state.modal.title}</p>
 					        		<img src={`${process.env.REACT_APP_BASE_URL + this.state.modal.image}`} className='w-11/12 mx-auto my-5' />
 					        		<p className='mb-5'>{this.state.modal.content}</p>
-					        		
+
 					        		<div className='flex justify-end my-5'>
 					        			<div>
 							        		<Button variant="contained" color="secondary" onClick={this.deleteNews}>Delete</Button>
@@ -218,12 +221,12 @@ class Master extends React.Component {
 					<div className={styles.cont_list}>
 						{this.state.listNews.map((val, index) => (
 
-							<Card className='w-1/3 p-5 cursor-pointer hover:shadow-xl ' onClick={
+							<Card className='w-1/2 lg:w-1/3 p-5 cursor-pointer hover:shadow-xl ' onClick={
 								() => this.setState({modal: {id:val._id, title: val.title, image: val.imageUrl, content: val.content, open: true }})
 								}>
-								<h1 className='overflow-hidden text-2xl text-center'>{val.title}</h1>
+								<h1 className='overflow-hidden text-lg lg:text-2xl font-bold text-center'>{val.title}</h1>
 								<img src={`${process.env.REACT_APP_BASE_URL + val.imageUrl}`} className='w-11/12 mx-auto my-5' />
-								<p className='max-h-20'>{val.content}</p>
+								<p className='max-h-20 text-sm'>{val.content}</p>
 							</Card>
 						))}
 					</div>
@@ -234,4 +237,10 @@ class Master extends React.Component {
 	}
 }
 
-export default Master;
+const mapDispatchToProps = dispatch => {
+	return {
+		changeNav: (nav) => dispatch({type:'change_navDashboard', nav: nav}),
+	}
+}
+
+export default connect(null, mapDispatchToProps)(Master);

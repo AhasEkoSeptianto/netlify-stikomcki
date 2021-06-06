@@ -13,7 +13,7 @@ import { changeName } from './../../../../../lib/changeFormName.js';
 // material ui
 import { Modal, Backdrop, Fade, Button } from '@material-ui/core';
 
-
+import { connect } from 'react-redux';
 
 class Mahasiswa extends React.Component{
 
@@ -46,6 +46,7 @@ class Mahasiswa extends React.Component{
 
 	componentDidMount(){
 		this.updateMhs(0);
+		this.props.changeNav(this.props.location.pathname);
 	}
 
 	changePagination = async (val) => {
@@ -53,10 +54,10 @@ class Mahasiswa extends React.Component{
 			case '+' : {
 				this.state.pagination.posPage + 2 > this.state.pagination.maxPage ? console.log('page unknow') : this.updateMhs(this.state.pagination.posPage + 1 ) ;
 				break;
-			} case '-' : { 
+			} case '-' : {
 				this.state.pagination.posPage < 1 ? console.log('page unknow') : this.updateMhs( this.state.pagination.posPage - 1 );
 				break;
-			} 
+			}
 		}
 
 		if (val < 100) {
@@ -104,10 +105,10 @@ class Mahasiswa extends React.Component{
 			          </div>
 			        </Fade>
 			      </Modal>
-			      
+
 				{/* end  */}
 
-				<h1 className={s.title}>Mahasiswa</h1>
+				<h1 className={`${s.title} font-bold`}>Mahasiswa</h1>
 
 				<div className={s.menuHeader}>
 					<Link to='/dashboard/mahasiswa/add'>
@@ -158,7 +159,7 @@ class Mahasiswa extends React.Component{
 											<img src='/image/icons/delete.svg' className={s.iconsButton} title='delete' alt='delete' />
 										</button>
 									</Link>
-								</td>							
+								</td>
 							</tr>
 							))}
 					</tbody>
@@ -173,10 +174,10 @@ class Mahasiswa extends React.Component{
 						{(() => {
 					        const pagination = [];
 					        for (let i = 1; i <= this.state.pagination.maxPage; i++) {
-					      
+
 					          if (i <= 0 ) {
-					           continue 
-					       	 } 
+					           continue
+					       	 }
 
 					       	 if (this.state.pagination.maxPage > 3){
 					          	if (i >= this.state.pagination.skipPage + 3  ) { continue }
@@ -189,7 +190,7 @@ class Mahasiswa extends React.Component{
 						        pagination.push(<p>...</p>);
 						        pagination.push(<p>{this.state.pagination.maxPage}</p>);
 					        }
-					        
+
 					        return pagination;
 					      })()}
 
@@ -203,4 +204,10 @@ class Mahasiswa extends React.Component{
 	}
 }
 
-export default Mahasiswa;
+const mapDispathToProps = dispatch => {
+	return {
+		changeNav : (nav) => dispatch({type:'change_navDashboard', nav:nav}),
+	}
+}
+
+export default connect(null,mapDispathToProps)(Mahasiswa);
