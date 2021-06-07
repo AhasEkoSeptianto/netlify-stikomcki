@@ -41,10 +41,10 @@ class dashboard extends React.Component {
 		var nav = document.getElementById('nav_dashboard');
 		if (this.state.navMobileOpen) {
 			this.setState({navMobileOpen: false});
-			nav.setAttribute('class', 'w-30 fixed left-0 bg-white h-screen z-50');
+			nav.setAttribute('class', 'overflow-hidden bg-white h-full shadow fixed left-0  w-0 col-span-0');
 		} else {
 			this.setState({navMobileOpen: true});
-			nav.setAttribute('class', 'w-0 fixed left-0 bg-white overflow-hidden z-50');
+			nav.setAttribute('class', 'overflow-hidden bg-white h-full shadow fixed left-0  w-60 col-span-2');
 		}
 	};
 
@@ -63,12 +63,10 @@ class dashboard extends React.Component {
 		let height = window.innerHeight;
 		let width = window.innerWidth;
 
-		console.log(width);
-
-		if (width < 600) {
-			this.setState({isMobile: true});
+		if (width <= 1024) {
+			console.log('phone device');
 		} else {
-			this.setState({isMobile: false});
+			nav.setAttribute('class', 'overflow-hidden bg-white h-full shadow absolute lg:static w-0 lg:w-full lg:col-span-2');
 		}
 
 	}
@@ -83,88 +81,88 @@ class dashboard extends React.Component {
 
 	render() {
 		return (
-			<Grid container spacing={0} className='h-full'>
-				<Grid item sm={3} lg={2} id='nav_dashboard' className={this.state.isMobile ? 'fixed w-0 overflow-hidden left-0 bg-white h-screen z-50' : 'static border-r border-gray-100'}>
-					<div className='bg-blue-300 flex justify-end'>
-						<img
-							alt="icons"
-							src={IconsCloceNav}
-							className={this.state.isMobile ? 'w-14 p-4 cursor-pointer' : 'w-0'}
-							id='icon_nav'
-							onClick={() => this._btnNavMobile()}
-						/>
-					</div>
-					{/* navbar kiri window */}
-					<NavLeft />
-				</Grid>
-
-				<Grid item sm={9} lg={10} className={this.state.isMobile ? 'w-full' : 'w-10/12' }>
-					{/* component bagian kanan window */}
-					<div className={`${styles.comp_rightTop}`}>
-						{/* bagian awal headaer kanan */}
-						<div className={styles.cont_headerLeft}>
+				<div className='grid grid-cols-12 grid-flow-row auto-rows-max h-full'>
+					<div id='nav_dashboard' className='overflow-hidden bg-white h-full shadow fixed left-0 lg:static w-0 lg:w-full lg:col-span-2'>
+						<div className='bg-blue-300 flex justify-end'>
 							<img
 								alt="icons"
-								src={IconNavbar}
-								className={this.state.isMobile ? 'h-1/2 p-1 ml-3 cursor-pointer' : 'h-0'}
+								src={IconsCloceNav}
+								className='w-14 overflow-hidden p-4 cursor-pointer lg:w-0'
+								id='icon_nav'
 								onClick={() => this._btnNavMobile()}
 							/>
 						</div>
-						{/* end bagian awal headaer kanan  */}
-						{/* bagian akhir header kanan */}
-						<div className={styles.cont_headerRight}>
-							<input
-								type="text"
-								className={styles.input_form}
-								placeholder="search for.."
-							/>
+						{/* navbar kiri window */}
+						<NavLeft />
+					</div>
+
+					<div className='col-span-12 lg:col-span-10'>
+						{/* component bagian kanan window */}
+						<div className={`${styles.comp_rightTop}`}>
+							{/* bagian awal headaer kanan */}
+							<div className={styles.cont_headerLeft}>
+								<img
+									alt="icons"
+									src={IconNavbar}
+									className='h-1/2 overflow-hidden p-1 ml-3 cursor-pointer lg:h-0'
+									onClick={() => this._btnNavMobile()}
+								/>
+							</div>
+							{/* end bagian awal headaer kanan  */}
+							{/* bagian akhir header kanan */}
+							<div className={styles.cont_headerRight}>
+								<input
+									type="text"
+									className={styles.input_form}
+									placeholder="search for.."
+								/>
+								<img
+									alt="icons"
+									src={Img_user}
+									className={
+										this.state.profileClick
+											? styles.iconsProfile_active
+											: styles.iconsProfile_notActive
+									}
+									onClick={() => this._btnProfile()}
+								/>
+							</div>
+							{/* end bagian akhir kanan */}
+						</div>
+						{/* component untuk hover profile */}
+						<div
+							className={
+								this.state.profileClick
+									? styles.comp_hoverProfile_active
+									: styles.comp_hoverProfile_notActive
+							}
+						>
 							<img
 								alt="icons"
 								src={Img_user}
-								className={
-									this.state.profileClick
-										? styles.iconsProfile_active
-										: styles.iconsProfile_notActive
-								}
-								onClick={() => this._btnProfile()}
+								className={styles.iconsImage_hover}
 							/>
+							<h4>{this.props.user}</h4>
+							<Link
+								className={styles.link}
+								onClick={() => alert("fiture cooming soon")}
+							>
+								Manage Account
+							</Link>
+							<Link
+								className={styles.link}
+								onClick={() => this._logout()}
+							>
+								Exit
+							</Link>
 						</div>
-						{/* end bagian akhir kanan */}
+						{/* end comp untuk hover profile */}
+						{/* window untuk body bagian kanan window */}
+						<NavRight uri={this.state.uri} />
+						{/* end window untuk body bagian kanan */}
+						{/* end component bagian kanan window */}
 					</div>
-					{/* component untuk hover profile */}
-					<div
-						className={
-							this.state.profileClick
-								? styles.comp_hoverProfile_active
-								: styles.comp_hoverProfile_notActive
-						}
-					>
-						<img
-							alt="icons"
-							src={Img_user}
-							className={styles.iconsImage_hover}
-						/>
-						<h4>{this.props.user}</h4>
-						<Link
-							className={styles.link}
-							onClick={() => alert("fiture cooming soon")}
-						>
-							Manage Account
-						</Link>
-						<Link
-							className={styles.link}
-							onClick={() => this._logout()}
-						>
-							Exit
-						</Link>
-					</div>
-					{/* end comp untuk hover profile */}
-					{/* window untuk body bagian kanan window */}
-					<NavRight uri={this.state.uri} />
-					{/* end window untuk body bagian kanan */}
-					{/* end component bagian kanan window */}
-				</Grid>
-			</Grid>
+				</div>
 		);
 	}
 }
