@@ -3,19 +3,24 @@ import React from "react";
 import s from "./footer.module.css";
 
 // material-ui
-import {  Grid, TextField, Button } from "@material-ui/core";
+import {  Grid, Container, TextField, Button } from "@material-ui/core";
 
 // axios
 import Axios from "axios";
 
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
-import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
+import { Link } from 'react-router-dom';
 
 class Footer extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleSubmit = this.handleSubmit.bind(this);
+
+		this.state = {
+			form: {
+				name: '',
+				email: '',
+				msg: '',
+			}
+		}
 	}
 
 	validate = (item, id) => {
@@ -25,15 +30,15 @@ class Footer extends React.Component {
 		} else {
 			document
 				.getElementById(id)
-				.setAttribute("style", "border:2px solid red;");
+				.setAttribute("style", "border:.1rem solid red;");
 		}
 	};
 
-	handleSubmit(event) {
-		event.preventDefault();
-		let nama = this.validate(event.target.name.value, "name");
-		let email = this.validate(event.target.email.value, "email");
-		let msg = this.validate(event.target.msg.value, "msg");
+	handleSubmit() {
+
+		let nama = this.validate(this.state.form.name, "name");
+		let email = this.validate(this.state.form.email, "email");
+		let msg = this.validate(this.state.form.msg, "msg");
 		if (nama !== "" && email !== "" && msg !== "") {
 			console.log("benar");
 			let data = {
@@ -63,147 +68,113 @@ class Footer extends React.Component {
 
 	render() {
 		return (
-			<div className={s.footerContainer}>
-				<Grid container spacing={0}>
-					<Grid item sm={2}>
-						<div className={s.container_footer_inside}>
-							<p>Alamat kami :</p>
-							<p className={s.alamat}>
-								Jl.Taman Harapan Baru, RT.008/RW 023, Pejuang,
-								Kecamatan Medan Satria, Kota Bekasi, Jawa Barat
-								17175 , Telp.0211234567
-							</p>
-						</div>
+			<div>
+				<Container className='text-gray-700 py-10'>
+
+					<Grid container spacing={2} className='py-10'>
+
+						<Grid item xs={12} lg={2}>
+							<h1 className='font-league_spartanbold text-sm'>Alamat Kami :</h1>
+							<section className='py-5'>
+								<p className='font-source_sans_proregular text-sm'>Jl.Taman Harapan Baru, RT.008/RW 023, Pejuang, Kecamatan Medan Satria, Kota Bekasi, Jawa Barat 17175 , Telp.0211234567</p>
+							</section>
+						</Grid>
+
+						<Grid item xs={12} lg={2}>
+							<h1 className='font-league_spartanbold text-sm'>Link Cepat :</h1>
+							<section className='py-5 text-sm divide-y divide-gray-400'>
+
+								<a href='/'>
+									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Home</p>
+								</a>
+								<a href='/tujuan-prodi-TI'>
+									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Program Stuci TI</p>
+								</a>
+								<a href='/tujuan-prodi-SI'>
+									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Program Studi SI</p>
+								</a>
+
+							</section>
+						</Grid>
+
+						<Grid item xs={12} lg={2}>
+							<h1 className='font-league_spartanbold text-sm'>Kunjungi Juga :</h1>
+							<section className='py-5 text-sm divide-y divide-gray-400'>
+								<a href='/'>
+									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Home</p>
+								</a>
+								<a href='https://www.banpt.or.id'>
+									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Ban PT AKREDITASI</p>
+								</a>
+								<a href='htpps://kemdikbud.go.id'>
+									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Kemdikbuk</p>
+								</a>
+								<a href='https://forlap.ristekdikti.go.id'>
+									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Informasi Pendidikan Nasional</p>
+								</a>
+
+							</section>
+						</Grid>
+
+						<Grid item xs={12} lg={6}>
+							<h1 className='font-league_spartanbold text-sm'>Hubungi Kami :</h1>
+
+							<Grid container spacing={2} className='my-5 p-2'>
+
+								<Grid item xs={12} lg={6} className='flex items-center'>
+
+									<Grid container spacing={1} alignItems="flex-end">
+							          <Grid item>
+							            <img src='/image/icons/userFooter.svg' className='w-5' />
+							          </Grid>
+							          <Grid item>
+							            <TextField label="Name" id='name' name='name' onChange={(e) => this.setState({form: {...this.state.form, name:e.target.value}})} />
+							          </Grid>
+							        </Grid>
+
+								</Grid>
+
+								<Grid item xs={12} lg={6}>
+
+									<Grid container spacing={1} alignItems="flex-end">
+							          <Grid item>
+							            <img src='/image/icons/gmail.svg' className='w-5' />
+							          </Grid>
+							          <Grid item>
+							            <TextField id="email" name='email' label="Email" onChange={(e) => this.setState({form: {...this.state.form, email: e.target.value}})} />
+							          </Grid>
+							        </Grid>
+
+								</Grid>
+
+								<Grid item xs={12} lg={12}>
+									<Grid container spacing={1}>
+
+							          <Grid item lg={0}>
+							            <img src='/image/icons/draw.svg' className='w-5' />
+							          </Grid>
+
+							          <Grid item lg={11}>
+
+							          	<textarea placeholder='text' id='msg' className='border border-gray-300 outline-none w-full h-32 p-1 mb-2' onChange={(e) => this.setState({form: {...this.state.form, text: e.target.value}})} />
+										<Button variant="contained" color='primary' size='small' className='lg:float-right' onClick={() => this.handleSubmit()}>Save</Button>
+
+							          </Grid>
+
+							        </Grid>
+								</Grid>
+
+							</Grid>
+
+
+						</Grid>
+
+
 					</Grid>
-					<Grid item sm={2}>
-						<div className={s.container_footer_inside}>
-							<p>Link Cepat</p>
-						</div>
-						<div className={s.link_Cepat}>
-							<ul>
-								<li className={s.li_linesremove}>
-									<a href="/" className={s.li_link_cepat}>
-										Home
-									</a>
-								</li>
-								<li className={s.li_linesremove}>
-									<a href="/tujuan-prodi-TI" className={s.li_link_cepat}>
-										Program Studi TI
-									</a>
-								</li>
-								<li className={s.li_linesremove}>
-									<a href="/tujuan-prodi-SI" className={s.li_link_cepat}>
-										Program Studi SI
-									</a>
-								</li>
-							</ul>
-						</div>
-					</Grid>
-					<Grid item sm={2}>
-						<div className={s.container_footer_inside}>
-							<p>Kunjungi juga</p>
-						</div>
-						<div className={s.link_Cepat}>
-							<ul>
-								<li className={s.li_linesremove}>
-									<a href="/" className={s.li_link_cepat}>
-										Home
-									</a>
-								</li>
-								<li className={s.li_linesremove}>
-									<a
-										href="https://www.banpt.or.id/"
-										target="_blank"
-										rel="noreferrer"
-										className={s.li_link_cepat}
-									>
-										Ban PT AKREDITASI
-									</a>
-								</li>
-								<li className={s.li_linesremove}>
-									<a
-										href="https://www.kemdikbud.go.id"
-										target="_blank"
-										rel="noreferrer"
-										className={s.li_link_cepat}
-									>
-										Kemdikbuk
-									</a>
-								</li>
-								<li className={s.li_linesremove}>
-									<a
-										href="https://forlap.ristekdikti.go.id/"
-										target="_blank"
-										rel="noreferrer"
-										className={s.li_link_cepat}
-									>
-										Informasi Pendidikan Nasional
-									</a>
-								</li>
-							</ul>
-						</div>
-					</Grid>
-					<Grid item sm={6}>
-						<div className={s.container_footer_inside}>
-							<p>Hubungi Kami</p>
-							<form
-								className={s.name_and_email_form}
-								onSubmit={this.handleSubmit}
-								noValidate
-								autoComplete="off"
-								method="post"
-							>
-								<div className={s.name_form}>
-									<div className={s.name}>
-										<AccountCircle
-											className={s.iconsName}
-										/>
-										<TextField
-											id="name"
-											name="name"
-											label="Name"
-										/>
-									</div>
-									<div className={s.email}>
-										<EmailRoundedIcon
-											className={s.iconsEmail}
-										/>
-										<TextField
-											id="email"
-											label="Email"
-											type="email"
-											name="email"
-										/>
-									</div>
-								</div>
-								<div className={s.msg_form}>
-									<CreateRoundedIcon />
-									<textarea
-										id="msg"
-										name="msg"
-										className={s.textarea_form}
-										placeholder="massage"
-									></textarea>
-								</div>
-								<div className={s.button_form}>
-									<Button
-										variant="contained"
-										size="small"
-										color="primary"
-										type="submit"
-									>
-										send
-									</Button>
-								</div>
-							</form>
-						</div>
-					</Grid>
-				</Grid>
-				<div>
-					<p className={s.copyright_container}>
-						Copyright &copy; STIKOMCKI_D
-					</p>
-				</div>
+
+					<p className='font-source_sans_proregular text-sm'>Copyright © STIKOMCKI_D</p>
+
+				</Container>
 			</div>
 		);
 	}

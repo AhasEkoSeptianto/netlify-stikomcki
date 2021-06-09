@@ -1,16 +1,7 @@
-import React, { Fragment } from "react";
-
-// icons material-ui
-import AddIcCallIcon from "@material-ui/icons/AddIcCall";
-import EmailIcon from "@material-ui/icons/Email";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import DashboardIcon from "@material-ui/icons/Dashboard";
+import React from "react";
 
 // material ui
 import { Container, Grid } from "@material-ui/core";
-
-// mycss
-import styles from "./Header.module.css";
 
 // link
 import { Link } from "react-router-dom";
@@ -42,72 +33,39 @@ class Header extends React.Component {
 
 	render() {
 		return (
-			<Fragment>
-				<div className={styles.header}>
-					<Container>
-						<Grid container spacing={1}>
-							<Grid
-								container
-								item
-								xs={6}
-								className={styles.headerListLeft}
-							>
-								<div className={styles.phoneCenter}>
-									<AddIcCallIcon
-										className={styles.imgCallPhone}
-										style={{ fontSize: 15 }}
-									/>
-									<p className={styles.textIcon}>
-										+62 235 6789
-									</p>
-								</div>
-								<div className={styles.emailCenter}>
-									<EmailIcon
-										className={styles.imgheaderEmail}
-										style={{ fontSize: 15 }}
-									/>
-									<p className={styles.textIcon}>
-										stikomckid@gmail.ac.id
-									</p>
-								</div>
-							</Grid>
-							<Grid
-								container
-								item
-								xs={6}
-								className={styles.headerListRight}
-							>
+			<div className='bg-gray-100 font-source_sans_proregular text-gray-600'>
+				<Container>
+					<Grid container>
+						<Grid item xs={6} lg={6} className='lg:flex p-1 items-center'>
 
-								{/* check apakah user telah login */}
-								<div className={`${this.state.isLoading ? styles.loading : styles.notloading }`}>
-									{this.state.isAuth ? (
-										<Fragment>
-											<Link className={styles.container_login} to="/dashboard">
-												<p className={styles.p_login}>Dashboard</p>
-												<DashboardIcon />
-											</Link>
-											<div
-												className={styles.container_logout}
-												onClick={this.logout}
-											>
-												<p className={styles.p_login}>Logout</p>
-												<AccountCircleIcon />
-											</div>
-										</Fragment>
-										) : (
-											<Link className={styles.container_login} to="/login">
-												<p className={styles.p_login}>Login</p>
-												<AccountCircleIcon />
-											</Link>
-										) }
-									
-								</div>
+							<div className='flex text-sm mr-8'>
+								<img src='/image/icons/telephone.svg' className='w-4 mr-2' />
+								<p>+62 235 6789</p>
+							</div>
+							<div className='flex text-sm mr-8'>
+								<img src='/image/icons/gmail.svg' className='w-4 mr-2' />
+								<p>stikomckid@gmail.ac.id</p>
+							</div>
 
-							</Grid>
 						</Grid>
-					</Container>
-				</div>
-			</Fragment>
+						<Grid item xs={6} lg={6} className='lg:flex justify-end'>
+
+							<Link to='/login' className='flex justify-end items-center ml-8'>
+								<p>Login</p>
+								<img src='/image/icons/user.svg' className='w-4 ml-2' />
+							</Link>
+							{this.state.isAuth ? (
+								<Link to='/dashboard' className='flex justify-end items-center ml-8'>
+									<p>Dashboard</p>
+									<img src='/image/icons/dashboard.svg' className='w-4 ml-2' />
+								</Link>
+								) : '' }
+
+
+						</Grid>
+					</Grid>
+				</Container>
+			</div>
 		);
 	}
 }
