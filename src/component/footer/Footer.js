@@ -86,7 +86,7 @@ class Footer extends React.Component {
 
 								<Link to='/'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Home</p>
-								</>
+								</Link>
 								<Link to='/tujuan-prodi-TI'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Program Stuci TI</p>
 								</Link>
