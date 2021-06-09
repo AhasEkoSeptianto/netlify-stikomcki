@@ -84,15 +84,15 @@ class Footer extends React.Component {
 							<h1 className='font-league_spartanbold text-sm'>Link Cepat :</h1>
 							<section className='py-5 text-sm divide-y divide-gray-400'>
 
-								<a href='/'>
+								<Link to='/'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Home</p>
-								</a>
-								<a href='/tujuan-prodi-TI'>
+								</>
+								<Link to='/tujuan-prodi-TI'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Program Stuci TI</p>
-								</a>
-								<a href='/tujuan-prodi-SI'>
+								</Link>
+								<Link to='/tujuan-prodi-SI'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Program Studi SI</p>
-								</a>
+								</Link>
 
 							</section>
 						</Grid>
@@ -100,18 +100,18 @@ class Footer extends React.Component {
 						<Grid item xs={12} lg={2}>
 							<h1 className='font-league_spartanbold text-sm'>Kunjungi Juga :</h1>
 							<section className='py-5 text-sm divide-y divide-gray-400'>
-								<a href='/'>
+								<Link to='/'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Home</p>
-								</a>
-								<a href='https://www.banpt.or.id'>
+								</Link>
+								<Link to='https://www.banpt.or.id'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Ban PT AKREDITASI</p>
-								</a>
-								<a href='htpps://kemdikbud.go.id'>
+								</Link>
+								<Link to='htpps://kemdikbud.go.id'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Kemdikbuk</p>
-								</a>
-								<a href='https://forlap.ristekdikti.go.id'>
+								</Link>
+								<Link to='https://forlap.ristekdikti.go.id'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Informasi Pendidikan Nasional</p>
-								</a>
+								</Link>
 
 							</section>
 						</Grid>
