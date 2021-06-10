@@ -33,7 +33,7 @@ class Header extends React.Component {
 
 	render() {
 		return (
-			<div className='bg-gray-100 font-source_sans_proregular text-gray-600'>
+			<div className='bg-gray-100 font-source_sans_proregular text-gray-600' id='index'>
 				<Container>
 					<Grid container>
 						<Grid item xs={6} lg={6} className='lg:flex p-1 items-center'>

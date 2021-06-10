@@ -65,7 +65,9 @@ class navbar extends React.Component{
 										<div className='lg:absolute hidden z-20 bg-white rounded-lg divide-y divide-gray-300 whitespace-nowrap' id={`nav_${val.header}`} onMouseOver={() => this.opsiNavDropdown(`nav_${val.header}`, 'open')} onMouseOut={() => this.opsiNavDropdown(`nav_${val.header}`, 'close')}>
 
 											{listNav[index]['dropdownList'].map((val, index) => (
-												<p className='py-2 px-4 hover:bg-blue-100 cursor-pointer'>{val}</p>
+												<Link to={`${val.link}#main`}>
+													<p className='py-2 px-4 hover:bg-blue-100 cursor-pointer'>{val.name}</p>
+												</Link>
 											))}
 
 										</div>

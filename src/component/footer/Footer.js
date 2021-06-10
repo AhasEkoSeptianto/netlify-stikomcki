@@ -8,7 +8,7 @@ import {  Grid, Container, TextField, Button } from "@material-ui/core";
 // axios
 import Axios from "axios";
 
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 class Footer extends React.Component {
 	constructor(props) {
@@ -84,13 +84,13 @@ class Footer extends React.Component {
 							<h1 className='font-league_spartanbold text-sm'>Link Cepat :</h1>
 							<section className='py-5 text-sm divide-y divide-gray-400'>
 
-								<Link to='/'>
+								<Link to='/#index'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Home</p>
 								</Link>
-								<Link to='/tujuan-prodi-TI'>
+								<Link to='/tujuan-prodi-TI#index'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Program Stuci TI</p>
 								</Link>
-								<Link to='/tujuan-prodi-SI'>
+								<Link to='/tujuan-prodi-SI#index'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Program Studi SI</p>
 								</Link>
 
@@ -100,18 +100,18 @@ class Footer extends React.Component {
 						<Grid item xs={12} lg={2}>
 							<h1 className='font-league_spartanbold text-sm'>Kunjungi Juga :</h1>
 							<section className='py-5 text-sm divide-y divide-gray-400'>
-								<Link to='/'>
+								<Link to='/#index'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Home</p>
 								</Link>
-								<Link to='https://www.banpt.or.id'>
+								<a target='_blank' href='https://www.banpt.or.id'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Ban PT AKREDITASI</p>
-								</Link>
-								<Link to='htpps://kemdikbud.go.id'>
+								</a>
+								<a target='_blank' href='https://kemdikbud.go.id'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Kemdikbuk</p>
-								</Link>
-								<Link to='https://forlap.ristekdikti.go.id'>
+								</a>
+								<a target='_blank' href='https://forlap.ristekdikti.go.id'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Informasi Pendidikan Nasional</p>
-								</Link>
+								</a>
 
 							</section>
 						</Grid>
