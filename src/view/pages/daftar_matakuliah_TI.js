@@ -31,7 +31,7 @@ import { Link } from "react-router-dom";
 import Footer from "./../../component/footer/Footer.js";
 
 // data mata kuliah TI
-import Data from "./../../component/data/data_daftar_matkul_TI.js";
+import Data_dosen_TI from "./../../component/data/data_daftar_matkul_TI.js";
 
 class daftar_matakuliah_TI extends React.Component {
 	constructor(props) {
@@ -79,225 +79,64 @@ class daftar_matakuliah_TI extends React.Component {
 									<h2 className={s.contentheader}>
 										Daftar matakuliah TI
 									</h2>
-									<div className={s.contentmain}>
-										<Container>
-											<TableContainer
-												component={Paper}
-												className={s.table_container}
-											>
-												{/*menggunakan class disetiab cell digunakan karena tidak work jika menggunakan class di parent*/}
-												<Table aria-label="simple table">
-													<TableHead>
-														<TableRow>
-															<TableCell
-																className={
-																	s.table_font
-																}
-															>
-																No
-															</TableCell>
-															<TableCell
-																align="center"
-																className={
-																	s.table_font
-																}
-															>
-																Nama Dosen
-																Pengajar
-															</TableCell>
-															<TableCell
-																align="center"
-																className={
-																	s.table_font
-																}
-															>
-																Kode Matakuliah
-															</TableCell>
-															<TableCell
-																align="center"
-																className={
-																	s.table_font
-																}
-															>
-																Nama Matakuliah
-															</TableCell>
-															<TableCell
-																align="center"
-																className={
-																	s.table_font
-																}
-															>
-																Jumlah Kelas
-															</TableCell>
-															<TableCell
-																align="center"
-																className={
-																	s.table_font
-																}
-															>
-																Jumlah Pertemuan
-															</TableCell>
-														</TableRow>
-													</TableHead>
-													<TableBody>
-														{Data.map(
-															(
-																daftar_matakuliah,
-																i
-															) => (
-																<TableRow
-																	key={i}
-																>
-																	<TableCell
-																		className={
-																			s.table_font
-																		}
-																	>
-																		{
-																			daftar_matakuliah.no
-																		}
-																	</TableCell>
-																	<TableCell
-																		className={
-																			s.table_font
-																		}
-																	>
-																		{
-																			daftar_matakuliah.nama
-																		}
-																	</TableCell>
-																	{/* looping kode matakuliah dari data */}
-																	<TableCell
-																		align="left"
-																		className={
-																			s.table_font
-																		}
-																	>
-																		{daftar_matakuliah.data.map(
-																			(
-																				data,
-																				i
-																			) => (
-																				<TableRow
-																					key={
-																						i
-																					}
-																				>
-																					<TableCell
-																						align="left"
-																						className={
-																							s.table_font
-																						}
-																					>
-																						{
-																							data.kode_matakuliah
-																						}
-																					</TableCell>
-																				</TableRow>
-																			)
-																		)}
-																	</TableCell>
-																	{/* looping kode nama matakuliah dari data */}
-																	<TableCell
-																		align="left"
-																		className={
-																			s.table_font
-																		}
-																	>
-																		{daftar_matakuliah.data.map(
-																			(
-																				data,
-																				i
-																			) => (
-																				<TableRow
-																					key={
-																						i
-																					}
-																				>
-																					<TableCell
-																						align="left"
-																						className={
-																							s.table_font
-																						}
-																					>
-																						{
-																							data.nama_matakuliah
-																						}
-																					</TableCell>
-																				</TableRow>
-																			)
-																		)}
-																	</TableCell>
-																	{/* looping jumlah kelas dari data */}
-																	<TableCell
-																		align="left"
-																		className={
-																			s.table_font
-																		}
-																	>
-																		{daftar_matakuliah.data.map(
-																			(
-																				data,
-																				i
-																			) => (
-																				<TableRow
-																					key={
-																						i
-																					}
-																				>
-																					<TableCell
-																						align="left"
-																						className={
-																							s.table_font
-																						}
-																					>
-																						{
-																							data.jumlah_kelas
-																						}
-																					</TableCell>
-																				</TableRow>
-																			)
-																		)}
-																	</TableCell>
-																	{/* looping kode nama matakuliah dari data */}
-																	<TableCell
-																		align="left"
-																		className={
-																			s.table_font
-																		}
-																	>
-																		{daftar_matakuliah.data.map(
-																			(
-																				data,
-																				i
-																			) => (
-																				<TableRow
-																					key={
-																						i
-																					}
-																				>
-																					<TableCell
-																						align="left"
-																						className={
-																							s.table_font
-																						}
-																					>
-																						{
-																							data.pertemuan
-																						}
-																					</TableCell>
-																				</TableRow>
-																			)
-																		)}
-																	</TableCell>
-																</TableRow>
-															)
-														)}
-													</TableBody>
-												</Table>
-											</TableContainer>
-										</Container>
-									</div>
+
+								{/* table */}
+
+								<table className='table-auto text-sm' cellspacing="0">
+
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Nama Dosen Pengajar</th>
+											<th>Kode Matakuliah</th>
+											<th>Nama Matakuliah</th>
+											<th>Jumlah Kelas</th>
+											<th>Jumlah Pertemuan</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										{Data_dosen_TI.map((val, index) => {
+											return (
+												<tr>
+													<td className='p-2 m-0 border'>{val.no}</td>
+													<td className='p-2 m-0 border'>{val.nama}</td>
+													<td className='p-2 m-0 border divide-y divide-gray-300'>
+														{val.data.map((val, index) => (
+															<tr className='border-0'>
+																<td>{val.kode_matakuliah}</td>
+															</tr>
+														))}
+													</td>
+													<td className='p-2 m-0 border divide-y divide-gray-300'>
+														{val.data.map((val, index) => (
+															<tr className='border-0'>
+																<td className='whitespace-nowrap'>{val.nama_matakuliah}</td>
+															</tr>
+														))}
+													</td>
+													<td className='p-2 m-0 border divide-y divide-gray-300'>
+														{val.data.map((val, index) => (
+															<tr className='border-0'>
+																<td>{val.jumlah_kelas}</td>
+															</tr>
+														))}
+													</td>
+													<td className='p-2 m-0 border divide-y divide-gray-300'>
+														{val.data.map((val, index) => (
+															<tr className='border-0'>
+																<td>{val.pertemuan}</td>
+															</tr>
+														))}
+													</td>
+												</tr>
+												)
+										})}
+									</tbody>
+								</table>
+
+								{/* end table */}
+
 								</div>
 							</Paper>
 						</Grid>

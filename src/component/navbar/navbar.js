@@ -38,12 +38,14 @@ class navbar extends React.Component{
 				<Header />
 				<Container>
 					<Grid container className='items-center text-gray-700'>
-						<Grid items xs={12} lg={5} className='lg:flex text-center lg:text-left items-center p-3'>
-							<img src={logoNav} className='w-10 h-10 mx-auto lg:mx-0 lg:mr-5' />
-							<div className='font-league_spartanbold'>
-								<h1 className='text-red-500'>Sekolah Tinggi Ilmu Komputer</h1>
-								<h1 className='text-blue-500'>Cipta Karya Informatika Kampus D</h1>
-							</div>
+						<Grid items xs={12} lg={5}>
+							<Link to={'/#main'} className='lg:flex text-center lg:text-left items-center p-3'>
+								<img src={logoNav} className='w-10 h-10 mx-auto lg:mx-0 lg:mr-5' />
+								<div className='font-league_spartanbold'>
+									<h1 className='text-red-500'>Sekolah Tinggi Ilmu Komputer</h1>
+									<h1 className='text-blue-500'>Cipta Karya Informatika Kampus D</h1>
+								</div>
+							</Link>
 						</Grid>
 
 
@@ -58,7 +60,7 @@ class navbar extends React.Component{
 								return(
 
 									<div className={this.state.navMobile ? 'lg:block' : `hidden lg:block`}>
-										<div className='flex relative cursor-default'  onMouseOver={() => this.opsiNavDropdown(`nav_${val.header}`, 'open')} onMouseOut={() => this.opsiNavDropdown(`nav_${val.header}`, 'close')}>
+										<div className='flex relative cursor-pointer'  onMouseOver={() => this.opsiNavDropdown(`nav_${val.header}`, 'open')} onMouseOut={() => this.opsiNavDropdown(`nav_${val.header}`, 'close')}>
 											<span>{val.header}</span>
 											{val.dropdownList.length < 1 ? '' : <img src='/image/icons/down-arrow.svg' className='w-3 ml-1' /> }
 										</div>

@@ -1,4 +1,4 @@
-var data = [
+var data_dosen_TI = [
 	{
 		no: 1,
 		nama: "Zaeni Miftah,S.Pd,MM",
@@ -524,4 +524,4 @@ var data = [
 	},
 ];
 
-export default data;
+export default data_dosen_TI;

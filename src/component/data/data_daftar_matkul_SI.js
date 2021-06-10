@@ -1,4 +1,4 @@
-var data = [
+var Data_dosen_SI = [
 	{
 		no: 1,
 		nama: "Mesra Betty Yel, S.Kom. M. Kom",
@@ -314,4 +314,4 @@ var data = [
 	},
 ];
 
-export default data;
+export default Data_dosen_SI;
