@@ -68,7 +68,7 @@ class Footer extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className='bg-gray-100'>
 				<Container className='text-gray-700 py-10'>
 
 					<Grid container spacing={2} className='py-10'>
