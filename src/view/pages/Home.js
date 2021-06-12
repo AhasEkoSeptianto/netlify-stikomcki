@@ -22,7 +22,6 @@ import bg3 from "./../../asset/image/background/bg3.jpeg";
 import s from "./../../asset/css/home.module.css";
 
 import { get } from './../../lib/axios.js';
-import { setCookies, getCookies } from './../../lib/cookie';
 
 
 class Home extends React.Component {
@@ -31,10 +30,10 @@ class Home extends React.Component {
 
 		document.title = "Home";
 
-		let gets = get(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`)
-		
-		let visitor = await get(`${process.env.REACT_APP_BASE_URL}api/visitor`);
-		console.log(visitor)
+		get(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`)
+
+		get(`${process.env.REACT_APP_BASE_URL}api/visitor`);
+
 	}
 
 	render() {

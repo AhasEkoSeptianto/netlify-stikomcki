@@ -1,7 +1,5 @@
 import React from "react";
 
-import s from "./footer.module.css";
-
 // material-ui
 import {  Grid, Container, TextField, Button } from "@material-ui/core";
 
@@ -103,13 +101,13 @@ class Footer extends React.Component {
 								<Link to='/#index'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Home</p>
 								</Link>
-								<a target='_blank' href='https://www.banpt.or.id'>
+								<a target='_blank' rel="noreferrer" href='https://www.banpt.or.id'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Ban PT AKREDITASI</p>
 								</a>
-								<a target='_blank' href='https://kemdikbud.go.id'>
+								<a target='_blank' rel="noreferrer" href='https://kemdikbud.go.id'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Kemdikbuk</p>
 								</a>
-								<a target='_blank' href='https://forlap.ristekdikti.go.id'>
+								<a target='_blank' rel="noreferrer" href='https://forlap.ristekdikti.go.id'>
 									<p className='p-1 cursor-pointer border-b-2 border-gray-300 hover:bg-gray-200'>Informasi Pendidikan Nasional</p>
 								</a>
 
@@ -125,7 +123,7 @@ class Footer extends React.Component {
 
 									<Grid container spacing={1} alignItems="flex-end">
 							          <Grid item>
-							            <img src='/image/icons/userFooter.svg' className='w-5' />
+							            <img src='/image/icons/userFooter.svg' alt='user' className='w-5' />
 							          </Grid>
 							          <Grid item>
 							            <TextField label="Name" id='name' name='name' onChange={(e) => this.setState({form: {...this.state.form, name:e.target.value}})} />
@@ -138,7 +136,7 @@ class Footer extends React.Component {
 
 									<Grid container spacing={1} alignItems="flex-end">
 							          <Grid item>
-							            <img src='/image/icons/gmail.svg' className='w-5' />
+							            <img src='/image/icons/gmail.svg' alt='gmail' className='w-5' />
 							          </Grid>
 							          <Grid item>
 							            <TextField id="email" name='email' label="Email" onChange={(e) => this.setState({form: {...this.state.form, email: e.target.value}})} />
@@ -151,7 +149,7 @@ class Footer extends React.Component {
 									<Grid container spacing={1}>
 
 							          <Grid item lg={0}>
-							            <img src='/image/icons/draw.svg' className='w-5' />
+							            <img src='/image/icons/draw.svg' className='w-5' alt='draw' />
 							          </Grid>
 
 							          <Grid item lg={11}>

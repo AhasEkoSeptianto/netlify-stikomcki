@@ -3,23 +3,13 @@ import React, { Fragment } from "react";
 // mycss;
 import s from "./login.module.css";
 
-// logo stikom
-import Logo from "./../../asset/image/logo Stikom.png";
-
 // icon material
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-// router
-import { connect } from "react-redux";
-
-// Cookie
-import Cookies from "universal-cookie";
-
 // lib
 import { post } from './../../lib/axios';
-import { is_auth } from './../../lib/is_auth';
 import { setCookies } from './../../lib/cookie';
 
 class login extends React.Component {
@@ -74,8 +64,12 @@ class login extends React.Component {
 			<div className={s.bg}>
 				<div className={s.container_login}>
 					<div className={s.header_login}>
-						<img alt="logo" src={Logo} className={`${s.img_logo} mx-auto`} />
-						<p className={s.text_stikom}>StikomCKI.D</p>
+						<img alt="logo" src='/favicon.ico' className={`${s.img_logo} mx-auto`} />
+						<p className='font-league_spartanbold p-2'>
+							<span className='text-red-500'>Stikom</span>
+							<span className='text-blue-500'>CKI</span>
+							<span className='text-white'>.D</span>
+						</p>
 					</div>
 					<div
 						className={s.container_wrong_pass}

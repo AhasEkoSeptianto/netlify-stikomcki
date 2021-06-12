@@ -8,7 +8,7 @@ import Chart from './cartjs/chart.js';
 // react material ui
 import { Grid, Card } from '@material-ui/core'; 
 
-import Calendar from 'react-calendar';
+// import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
 // lib
@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
 				<Grid item xs={12} lg={6}>
 					<Card className={s.cardHeader}>
 						<div className={s.cont_head_icons}>
-							<img src='/image/icons/mahasiswa.svg' className={s.icons_headers} />
+							<img src='/image/icons/mahasiswa.svg' alt='mahasiswa' className={s.icons_headers} />
 						</div>
 
 						<div>
@@ -61,7 +61,7 @@ class Dashboard extends React.Component {
 				<Grid item xs={12} lg={6}>
 					<Card className={s.cardHeader}>
 						<div className={s.cont_head_icons}>
-							<img src='/image/icons/visitor.svg' className={s.icons_headers} />
+							<img src='/image/icons/visitor.svg' alt='visitor' className={s.icons_headers} />
 						</div>
 
 						<div className={s.cont_info_head}>

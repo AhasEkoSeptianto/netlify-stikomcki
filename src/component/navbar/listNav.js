@@ -1,6 +1,7 @@
 const listNav = [
 	{
-		header:'Perguruan Tinggi',
+		name: 'Perguruan Tinggi',
+		id:'perguruanTinggi',
 		dropdownList:[
 			{
 				name: 'Visi Misi Perguruan Tinggi',
@@ -25,7 +26,8 @@ const listNav = [
 		]
 	},
 	{
-		header:'Program Study TI',
+		name:'Program Study TI',
+		id: 'programStudyTI',
 		dropdownList:[
 			{
 				name: 'Visi Misi TI',
@@ -42,7 +44,8 @@ const listNav = [
 		]
 	},
 	{
-		header:'Program Study SI',
+		name:'Program Study SI',
+		id: 'programStudySI',
 		dropdownList:[
 			{
 				name: 'Visi Misi SI',
@@ -59,7 +62,8 @@ const listNav = [
 		]
 	},
 	{
-		header:'Pendaftaran Mahasiswa Baru',
+		name:'Pendaftaran Mahasiswa Baru',
+		id: null,
 		dropdownList:[],
 	}
 ]

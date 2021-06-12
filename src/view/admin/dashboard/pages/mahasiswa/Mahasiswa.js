@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 import s from './../../../../../asset/css/admin/dashboard/pages/mahasiswa/mahasiswa.module.css';
 
 // lib
-import { get, post } from './../../../../../lib/axios';
+import { post } from './../../../../../lib/axios';
 import { changeName } from './../../../../../lib/changeFormName.js';
 
 // material ui
-import { Modal, Backdrop, Fade, Button } from '@material-ui/core';
+import { Modal, Backdrop, Fade} from '@material-ui/core';
 
 import { connect } from 'react-redux';
 
@@ -39,7 +39,7 @@ class Mahasiswa extends React.Component{
 
 	deleteMhs = async () => {
 		this.setState({modal: { ...this.state.modal, isLoading: true }});
-		var posts = await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa/deleteMhs`, {id: this.state.modal.id_mhs});
+		await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa/deleteMhs`, {id: this.state.modal.id_mhs});
 		this.setState({modal: {...this.state.modal, open:false, isLoading: false}});
 		this.updateMhs();
 	}
@@ -57,6 +57,8 @@ class Mahasiswa extends React.Component{
 			} case '-' : {
 				this.state.pagination.posPage < 1 ? console.log('page unknow') : this.updateMhs( this.state.pagination.posPage - 1 );
 				break;
+			} default : {
+				console.log('errorr at changePagination')
 			}
 		}
 
@@ -99,7 +101,7 @@ class Mahasiswa extends React.Component{
 			          <div className={s.modal}>
 			            <p>Are you sure you delete {this.state.modal.nama_mhs} ? </p>
 			            <button className={s.btn_dltModal} onClick={this.deleteMhs}>{this.state.modal.isLoading ? (
-			            	<img src='/image/icons/loading.svg' className={s.loadingIcons} />
+			            	<img src='/image/icons/loading.svg' alt='loading' className={s.loadingIcons} />
 			            	) : (<span>Delete</span>) }</button>
 			            <button className={s.btn_cnclModal} onClick={() => this.setState({modal: { ...this.state.modal, open:false }})}>Cancel</button>
 			          </div>
@@ -168,7 +170,7 @@ class Mahasiswa extends React.Component{
 				<div className={s.container_pagination}>
 					<p>pages {Math.round(this.state.pagination.skipPage / 8 + 1)} from {this.state.pagination.maxPage} </p>
 					<div className={s.container_arrow}>
-						<img src='/image/icons/previous-button.svg' className={s.arrowPagin} onClick={() => this.changePagination('-')} />
+						<img src='/image/icons/previous-button.svg' alt='button' className={s.arrowPagin} onClick={() => this.changePagination('-')} />
 
 						{/* pagination */}
 						{(() => {
@@ -195,7 +197,7 @@ class Mahasiswa extends React.Component{
 					      })()}
 
 
-						<img src='/image/icons/next-button.svg' className={s.arrowPagin} onClick={() => this.changePagination('+')} />
+						<img src='/image/icons/next-button.svg' alt='button' className={s.arrowPagin} onClick={() => this.changePagination('+')} />
 					</div>
 				</div>
 

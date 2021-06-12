@@ -6,23 +6,14 @@ import styles from "./navbar_left.module.css";
 // router
 import { Link } from "react-router-dom";
 
-import IconsCloceNav from "./../../../../../asset/image/icons/close.png";
-
 // router
 import { router_nav } from "./../../routerNav.js";
-
-// lib
-import { getCookies } from './../../../../../lib/cookie';
 
 // redux
 import { connect } from 'react-redux';
 
 class navbar_left extends React.Component {
-
-	constructor(props){
-		super(props);
-	}
-
+	
 	render() {
 		return (
 			<div>

@@ -199,7 +199,7 @@ class Master extends React.Component {
 				        	<div className='flex justify-center items-center h-screen'>
 					        	<div className='w-10/12 lg:w-1/3 mx-auto bg-white p-5 overflow-y-auto h-full'>
 					        		<p className='text-2xl text-center font-bold'>{this.state.modal.title}</p>
-					        		<img src={`${process.env.REACT_APP_BASE_URL + this.state.modal.image}`} className='w-11/12 mx-auto my-5' />
+					        		<img src={`${process.env.REACT_APP_BASE_URL + this.state.modal.image}`} alt='image' className='w-11/12 mx-auto my-5' />
 					        		<p className='mb-5'>{this.state.modal.content}</p>
 
 					        		<div className='flex justify-end my-5'>

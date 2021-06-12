@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 // lib
 import { is_auth } from './../../lib/is_auth';
-import { removeCookies, getAllCookies } from './../../lib/cookie';
+import { removeCookies } from './../../lib/cookie';
 
 class Header extends React.Component {
 
@@ -39,11 +39,11 @@ class Header extends React.Component {
 						<Grid item xs={6} lg={6} className='lg:flex p-1 items-center'>
 
 							<div className='flex text-sm mr-8'>
-								<img src='/image/icons/telephone.svg' className='w-4 mr-2' />
+								<img src='/image/icons/telephone.svg' alt='phone' className='w-4 mr-2' />
 								<p>+62 235 6789</p>
 							</div>
 							<div className='flex text-sm mr-8'>
-								<img src='/image/icons/gmail.svg' className='w-4 mr-2' />
+								<img src='/image/icons/gmail.svg' alt='gmail' className='w-4 mr-2' />
 								<p>stikomckid@gmail.ac.id</p>
 							</div>
 
@@ -52,12 +52,12 @@ class Header extends React.Component {
 
 							<Link to='/login' className='flex justify-end items-center ml-8'>
 								<p>Login</p>
-								<img src='/image/icons/user.svg' className='w-4 ml-2' />
+								<img src='/image/icons/user.svg' alt='user' className='w-4 ml-2' />
 							</Link>
 							{this.state.isAuth ? (
 								<Link to='/dashboard' className='flex justify-end items-center ml-8'>
 									<p>Dashboard</p>
-									<img src='/image/icons/dashboard.svg' className='w-4 ml-2' />
+									<img src='/image/icons/dashboard.svg' alt='dashboard' className='w-4 ml-2' />
 								</Link>
 								) : '' }
 

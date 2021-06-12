@@ -11,13 +11,11 @@ class chart extends React.Component{
             var getMhs = await get(`${process.env.REACT_APP_BASE_URL}api/mhs-statistik`);
 
 
-            var crnYears = new Date().getFullYear(); 
-
             var ctx = document.getElementById('myChart').getContext('2d');
-            
+
             Chart.register(...registerables)
-            
-            var myChart = new Chart(ctx, {
+
+            new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: getMhs.data.label,

@@ -14,9 +14,6 @@ import IconsCloceNav from "./../../../asset/image/icons/close.png";
 import NavLeft from "./comp_dashboard/navbar_left/navbarLeft.js";
 import NavRight from "./comp_dashboard/navbar_right/navbarRight.js";
 
-// material ui
-import { Grid } from '@material-ui/core';
-
 // router
 import { Link } from "react-router-dom";
 
@@ -60,7 +57,6 @@ class dashboard extends React.Component {
 
 	changeDeviceWidth = () => {
 		let nav = document.getElementById('nav_dashboard');
-		let height = window.innerHeight;
 		let width = window.innerWidth;
 
 		if (width <= 1024) {

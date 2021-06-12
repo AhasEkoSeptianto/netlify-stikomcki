@@ -1,26 +1,25 @@
 const changeName = (name) => {
-	console.log(name)
 	if (name.length >= 29) {
 		var resMaxName = maxLength(30, name);
 		return resMaxName;
 	}
 
-	var name = name.split(' ');
+	var nameSplit = name.split(' ');
 	var resName = [];
 	var space = "";
 
 	// menyimpan value jika ada space tertinggal diakhir, funsi lain dari trim()
-	var name = name.filter((el, index) => {
-		if (el == "" && index != 0){
+	var nameFilter = nameSplit.filter((el, index) => {
+		if (el === "" && index !== 0){
 			space = " ";
 		}
-		return el != "";
+		return el !== "";
 	});
 
 
 	// iterasi
-	name.forEach(val =>{
-		
+	nameFilter.forEach(val =>{
+
 		// ubah string menjadi array
 		let arrVal = val.split(''); 
 		// ubah chart pertama menjadi uppercase

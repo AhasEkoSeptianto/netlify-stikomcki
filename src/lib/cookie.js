@@ -4,23 +4,20 @@ import Cookies from "universal-cookie";
 var cookies = new Cookies();
 
 const getCookies = (cookieName) => {
-	let rescookies = cookies.get(cookieName);
-	return rescookies;
+	return cookies.get(cookieName);
 }
 
 const setCookies = (bareer, val) => {
-	let rescookies = cookies.set(bareer, val, { path:'/', samesite:'none', secure:true })
-	return rescookies
-} 
+	return cookies.set(bareer, val, { path:'/', samesite:'none', secure:true })
+
+}
 
 const getAllCookies = () => {
-	let rescookies = cookies.getAll();
-	return rescookies;
+	return cookies.getAll();
 }
 
 const removeCookies = (cookieName) => {
-	let rescookies = cookies.remove(cookieName);
-	return removeCookies;
+	return cookies.remove(cookieName);
 }
 
 
