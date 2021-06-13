@@ -30,6 +30,7 @@
 	padding:5px 10px;
 	background-color: #69B1CB;
 	cursor: pointer;
+	border-radius: 5px;
 }
 
 .buttonLogout {

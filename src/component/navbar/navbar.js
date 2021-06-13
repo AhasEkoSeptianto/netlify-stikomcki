@@ -18,8 +18,8 @@ class navbar extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			navMobile: false,
 			isMobile: {
+				togleNav: false,
 				mobile: false,
 			},
 		}
@@ -48,7 +48,6 @@ class navbar extends React.Component{
 			listNav[val] = false;
 
 		} else {
-			console.log('else')
 			id.style.display = 'block';
 			listNav[val] = true;
 		}
@@ -56,22 +55,20 @@ class navbar extends React.Component{
 	}
 
 	// opsi untuk show button/togle nav pada platform mobile
-	changeNavMobile = () => {
-		this.state.navMobile ? this.setState({navMobile: false}) : this.setState({navMobile: true}) ;
+	changeTogleNav = () => {
+		this.state.isMobile.togleNav ? this.setState({isMobile: {...this.state.isMobile, togleNav:false}}) : this.setState({isMobile: { ...this.state.isMobile, togleNav: true }}) ;
 	}
 
 	// setup / config
-	setup = () => {
+	setMobOrDesk = () => {
 		// jika mobile user maka state akan berubah isMobile
-		window.innerWidth <= 1000 ? this.setState({ isMobile:true }) : this.setState({ isMobile: false }) ;
-		// listener resize
-		window.addEventListener('resize', function(){
-			window.innerWidth <= 1000 ? this.setState({ isMobile:true }) : this.setState({ isMobile: false }) ;
-		});
+		window.innerWidth < 1000 ? this.setState({ isMobile:{...this.state.isMobile , mobile:true} }) : this.setState({ isMobile: {...this.state.isMobile, mobile:false} }) ;
 	}
 
 	componentDidMount(){
-		this.setup();
+		this.setMobOrDesk();
+		// listener resize
+		window.addEventListener('resize', this.setMobOrDesk())
 	}
 
 	render(){
@@ -97,14 +94,14 @@ class navbar extends React.Component{
 						<Grid items xs={12} lg={7} className='lg:flex py-5 lg:py-0 lg:justify-between font-source_sans_proregular text-md'>
 
 							{/* jika mobile device show btn */}
-							<img src='/image/icons/nav.svg' alt='nav' className='w-5 mx-auto my-5 cursor-pointer lg:hidden' onClick={this.changeNavMobile} />
+							<img src='/image/icons/nav.svg' alt='nav' className='w-5 mx-auto my-5 cursor-pointer lg:hidden' onClick={this.changeTogleNav} />
 
 							{listNav.map((val,index) => {
 								return(
 
-									<div className={this.state.navMobile ? 'lg:block' : `hidden lg:block`}>
+									<div className={this.state.isMobile.togleNav ? 'lg:block border p-1' : `hidden lg:block`}>
 
-										{this.state.isMobile ? (
+										{this.state.isMobile.mobile ? (
 											<Fragment>
 												<div className='flex relative cursor-pointer'
 												onClick={() => this.opsiNavDropdownMobile(`${val.id}`)}
@@ -112,7 +109,7 @@ class navbar extends React.Component{
 													<span>{val.name}</span>
 													{val.dropdownList.length < 1 ? '' : <img src='/image/icons/down-arrow.svg' alt='arrow' className='w-3 ml-1' /> }
 												</div>
-												<div className='lg:absolute hidden z-20 bg-white rounded-lg divide-y divide-gray-300 whitespace-nowrap' 
+												<div className='lg:absolute hidden z-20 bg-white rounded-lg whitespace-nowrap'
 													id={`${val.id}`}
 													>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 // router
 import { Link } from 'react-router-dom';
@@ -14,6 +14,8 @@ import { changeName } from './../../../../../lib/changeFormName.js';
 import { Modal, Backdrop, Fade} from '@material-ui/core';
 
 import { connect } from 'react-redux';
+
+import Loading from './../../../../../component/animLoading/loading.js';
 
 class Mahasiswa extends React.Component{
 
@@ -74,17 +76,17 @@ class Mahasiswa extends React.Component{
 	}
 
 	async updateMhs(skipPage){
+		this.setState({isLoading: true})
 		var allMhs = await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`, {skip: skipPage});
 		this.setState({allMhs: allMhs.data.mhs, isLoading:false, pagination: {...this.state.pagination, maxPage: allMhs.data.max, skipPage: allMhs.data.skip, posPage:allMhs.data.page}});
-		console.log(this.state)
 	}
 
 	render(){
 		return(
-			<div className={this.state.isLoading ? s.hidden : s.body}>
-
+			<Fragment>
+			{this.state.isLoading ? <Loading /> : (
+				<div className={s.body}>
 				{/* modal */}
-
 				<Modal
 			        aria-labelledby="transition-modal-title"
 			        aria-describedby="transition-modal-description"
@@ -110,14 +112,14 @@ class Mahasiswa extends React.Component{
 
 				{/* end  */}
 
-				<h1 className={`${s.title} font-bold`}>Mahasiswa</h1>
+				<h1 className={`${s.title} font-bold font-league_spartanbold`}>Mahasiswa</h1>
 
 				<div className={s.menuHeader}>
 					<Link to='/dashboard/mahasiswa/add'>
 						<button className={s.button}>Tambah Mhs</button>
 					</Link>
 					<div className={s.filter_cont}>
-						<input type='text' placeholder='nim/nama/etc' onChange={(e) => this.setState({filter:e.target.value})} />
+						<input type='text' className='border' placeholder='nim/nama/etc' onChange={(e) => this.setState({filter:e.target.value})} />
 						<button className={s.button_filter} onClick={this.filterMhs}>filter</button>
 					</div>
 				</div>
@@ -202,6 +204,8 @@ class Mahasiswa extends React.Component{
 				</div>
 
 			</div>
+				) }
+			</Fragment>
 			)
 	}
 }

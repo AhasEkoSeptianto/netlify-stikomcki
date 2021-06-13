@@ -1,6 +1,8 @@
 .body {
 	padding: 15px;
 	color:#404040;
+	width:100%;
+	position:relative;
 }
 
 .title {
