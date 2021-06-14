@@ -38,10 +38,10 @@ class dashboard extends React.Component {
 		var nav = document.getElementById('nav_dashboard');
 		if (this.state.navMobileOpen) {
 			this.setState({navMobileOpen: false});
-			nav.setAttribute('class', 'overflow-hidden bg-white h-full shadow fixed left-0  w-0 z-50 col-span-0');
+			nav.setAttribute('class', 'overflow-hidden bg-white h-full border-r border-gray-100 fixed left-0  w-0 z-50 col-span-0');
 		} else {
 			this.setState({navMobileOpen: true});
-			nav.setAttribute('class', 'overflow-hidden bg-white h-full shadow fixed left-0  w-60 z-50 col-span-2');
+			nav.setAttribute('class', 'overflow-hidden bg-white h-full border-r border-gray-100 fixed left-0  w-60 z-50 col-span-2');
 		}
 	};
 
@@ -62,7 +62,7 @@ class dashboard extends React.Component {
 		if (width <= 1024) {
 			console.log('phone device');
 		} else {
-			nav.setAttribute('class', 'overflow-hidden bg-white h-full shadow absolute lg:static w-0 lg:w-full lg:col-span-2');
+			nav.setAttribute('class', 'overflow-hidden bg-white h-full border-r border-gray-100 absolute lg:static w-0 lg:w-full lg:col-span-2');
 		}
 
 	}
@@ -78,7 +78,7 @@ class dashboard extends React.Component {
 	render() {
 		return (
 				<div className='grid grid-cols-12 grid-flow-row auto-rows-max h-full'>
-					<div id='nav_dashboard' className='overflow-hidden bg-white h-full shadow fixed left-0 z-50 bg-white lg:static w-0 lg:w-full lg:col-span-2'>
+					<div id='nav_dashboard' className='overflow-hidden bg-white h-full border-r border-gray-100 fixed left-0 z-50 bg-white lg:static w-0 lg:w-full lg:col-span-2'>
 						<div className='bg-blue-300 flex justify-end'>
 							<img
 								alt="icons"

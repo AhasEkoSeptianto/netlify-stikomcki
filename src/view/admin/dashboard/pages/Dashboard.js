@@ -6,15 +6,15 @@ import s from "./../../../../asset/css/admin/dashboard/Dashboard.module.css";
 import Chart from './cartjs/chart.js';
 
 // react material ui
-import { Grid, Card } from '@material-ui/core'; 
+import { Grid, Card } from '@material-ui/core';
 
 // import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+// import 'react-calendar/dist/Calendar.css';
 
 // lib
 import { get, post } from './../../../../lib/axios.js';
-
 import { connect } from 'react-redux';
+import Calendar from 'rc-calendar';
 
 class Dashboard extends React.Component {
 
@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
 				</Grid>
 
 				<Grid item xs={12} lg={4}>
-
+					{/* <Calendar /> */}
 				</Grid>
 
 			</Grid>

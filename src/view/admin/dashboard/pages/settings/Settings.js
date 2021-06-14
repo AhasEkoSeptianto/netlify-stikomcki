@@ -8,6 +8,8 @@ import ChangeAccount from './form_setting/changeAccount';
 
 import { connect } from 'react-redux';
 
+import Breadcumbs from './../../../../../component/breadCumb/breadcumb';
+
 class Settings extends React.Component {
 
 	Exit = () => {
@@ -22,7 +24,9 @@ class Settings extends React.Component {
 		return (
 			<div className={styles.body}>
 
-				<h1 className={styles.titleHead}>Setting</h1>
+				<div className='mb-5'>
+					<Breadcumbs path={this.props.location.pathname} />
+				</div>
 
 				{/* settings profile */}
 				<p className={styles.titleSetting}>Profile</p>

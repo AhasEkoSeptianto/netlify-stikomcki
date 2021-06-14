@@ -5,6 +5,7 @@ import s from './../../../../../asset/css/admin/dashboard/pages/mahasiswa/addMhs
 // lib
 import { changeName, maxLength, changeNumberPhone } from './../../../../../lib/changeFormName.js';
 import { post } from './../../../../../lib/axios.js';
+import Breadcumbs from './../../../../../component/breadCumb/breadcumb';
 
 // material ui
 import { Paper, FormControl, InputLabel, Select, TextField, Button, InputAdornment } from '@material-ui/core';
@@ -14,7 +15,6 @@ class addMhs extends React.Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			
 			form_nama:'',
 			form_jurusan: '',
 			form_semester: '',
@@ -60,7 +60,8 @@ class addMhs extends React.Component{
 	render(){
 		return (
 			<div className={s.body}>
-				<h1 className={s.titleHeader}>Tambah Mahasiswa</h1>
+
+				<Breadcumbs path={this.props.location.pathname} />
 
 				<Paper className={s.container_form}>
 

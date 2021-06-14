@@ -6,13 +6,15 @@ import Axios from "axios";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import { Card, Modal, Backdrop, Fade, Button } from '@material-ui/core';
+import { Card, Modal, Backdrop, Fade, Button, Container } from '@material-ui/core';
 
 // Cookie
 import Cookies from "universal-cookie";
 
 // lib
 import { post } from './../../../../../lib/axios.js';
+
+import Breadcumbs from './../../../../../component/breadCumb/breadcumb';
 
 
 import { connect } from 'react-redux';
@@ -99,7 +101,12 @@ class Master extends React.Component {
 
 	render() {
 		return (
-			<div className={styles.body}>
+			<Container className={styles.body}>
+
+				<div className='my-5'>
+					<Breadcumbs path={this.props.location.pathname} />
+				</div>
+
 				<div className={styles.nav_berita}>
 					<p onClick={() => this.setState({ navCreate: true })} className={this.state.navCreate ? `${styles.create_btn} bg-blue-100` : styles.create_btn}>
 						create
@@ -232,7 +239,7 @@ class Master extends React.Component {
 					</div>
 				</div>
 				{/* end list */}
-			</div>
+			</Container>
 		);
 	}
 }

@@ -30,8 +30,6 @@ class Home extends React.Component {
 
 		document.title = "Home";
 
-		get(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`)
-
 		get(`${process.env.REACT_APP_BASE_URL}api/visitor`);
 
 	}
