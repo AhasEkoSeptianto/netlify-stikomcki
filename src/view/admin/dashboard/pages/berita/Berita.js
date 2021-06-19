@@ -225,16 +225,16 @@ class Master extends React.Component {
 				        </Fade>
 				      </Modal>
 
-					<div className={styles.cont_list}>
+					<div className={`${styles.cont_list} grid grid-cols-3 gap-5`}>
 						{this.state.listNews.map((val, index) => (
 
-							<Card className='w-1/2 lg:w-1/3 p-5 cursor-pointer hover:shadow-xl ' onClick={
+							<div className='border p-3 overflow-hidden cursor-pointer hover:shadow-xl ' onClick={
 								() => this.setState({modal: {id:val._id, title: val.title, image: val.imageUrl, content: val.content, open: true }})
 								}>
 								<h1 className='overflow-hidden text-lg lg:text-2xl font-bold text-center'>{val.title}</h1>
 								<img src={`${process.env.REACT_APP_BASE_URL + val.imageUrl}`} className='w-11/12 mx-auto my-5' />
-								<p className='max-h-20 text-sm'>{val.content}</p>
-							</Card>
+								<p className='text-sm'>{val.content}</p>
+							</div>
 						))}
 					</div>
 				</div>

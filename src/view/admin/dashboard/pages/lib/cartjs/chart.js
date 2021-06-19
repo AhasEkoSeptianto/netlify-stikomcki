@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chart, registerables } from 'chart.js';
 
-import { get } from './../../../../../lib/axios.js';
+import { get } from './../../../../../../lib/axios.js';
 
 
 class chart extends React.Component{
@@ -53,7 +53,7 @@ class chart extends React.Component{
     
     render(){
         return (
-            <div className='w-full'>
+            <div className='w-full my-10'>
                 <canvas id="myChart"></canvas>
             </div>
        )
