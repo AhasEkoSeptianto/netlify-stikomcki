@@ -5,6 +5,7 @@ module.exports = {
     fontFamily: {
       'league_spartanbold':['league_spartanbold'],
       'source_sans_proregular':['source_sans_proregular'],
+      'kaushan_scriptregular':['kaushan_scriptregular'],
     },
     extend: {},
   },

@@ -73,7 +73,7 @@ class navbar extends React.Component{
 
 	render(){
 		return(
-			<div>
+			<div className='shadow'>
 
 				<Header />
 				<Container>
@@ -106,8 +106,18 @@ class navbar extends React.Component{
 												<div className='flex relative cursor-pointer'
 												onClick={() => this.opsiNavDropdownMobile(`${val.id}`)}
 												>
-													<span>{val.name}</span>
-													{val.dropdownList.length < 1 ? '' : <img src='/image/icons/down-arrow.svg' alt='arrow' className='w-3 ml-1' /> }
+													{val.dropdownList.length < 1 ? (
+
+														<a target='_blank' href={val.link}>
+															<span>{val.name}</span>
+														</a>
+
+														) : (
+														<Fragment>
+															<span>{val.name}</span>
+															<img src='/image/icons/down-arrow.svg' alt='arrow' className='w-3 ml-1' />
+														</Fragment>
+														)}
 												</div>
 												<div className='lg:absolute hidden z-20 bg-white rounded-lg whitespace-nowrap'
 													id={`${val.id}`}
@@ -126,8 +136,18 @@ class navbar extends React.Component{
 												onMouseOver={() => this.opsiNavDropdownDesktop(`${val.id}`, 'open')}
 												onMouseOut={() => this.opsiNavDropdownDesktop(`${val.id}`, 'close')}
 												>
-														<span>{val.name}</span>
-														{val.dropdownList.length < 1 ? '' : <img src='/image/icons/down-arrow.svg' alt='arrow' className='w-3 ml-1' /> }
+													{val.dropdownList.length < 1 ? (
+
+														<a target='_blank' href={val.link}>
+															<span>{val.name}</span>
+														</a>
+
+														) : (
+														<Fragment>
+															<span>{val.name}</span>
+															<img src='/image/icons/down-arrow.svg' alt='arrow' className='w-3 ml-1' />
+														</Fragment>
+														)}
 												</div>
 												<div className='lg:absolute hidden z-20 bg-white rounded-lg divide-y divide-gray-300 whitespace-nowrap' 
 													onMouseOver={() => this.opsiNavDropdownDesktop(`${val.id}`, 'open')}

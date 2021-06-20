@@ -63,6 +63,7 @@ const listNav = [
 	},
 	{
 		name:'Pendaftaran Mahasiswa Baru',
+		link: 'https://pmb.stikomcki.ac.id/',
 		id: null,
 		dropdownList:[],
 	}

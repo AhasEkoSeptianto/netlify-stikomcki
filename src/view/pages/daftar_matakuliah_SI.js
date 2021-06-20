@@ -26,6 +26,8 @@ import Footer from "./../../component/footer/Footer.js";
 // data mata kuliah TI
 import Data_dosen_SI from "./../../component/data/data_daftar_matkul_SI.js";
 
+import Aside from './../../component/aside_pages/aside';
+
 class daftar_matakuliah_SI extends React.Component {
 	constructor(props) {
 		super(props);
@@ -97,7 +99,7 @@ class daftar_matakuliah_SI extends React.Component {
 													<td className='p-2 m-0 border divide-y divide-gray-300'>
 														{val.data.map((val, index) => (
 															<tr className='border-0'>
-																<td>{val.kode_matakuliah}</td>
+																<td className='whitespace-nowrap'>{val.kode_matakuliah}</td>
 															</tr>
 														))}
 													</td>
@@ -131,58 +133,7 @@ class daftar_matakuliah_SI extends React.Component {
 							</Paper>
 						</Grid>
 						<Grid item sm={3}>
-							<Paper
-								className={s.paperKategory}
-								variant="outlined"
-								square
-							>
-								<div className={s.kategori}>
-									<h4>Kategori</h4>
-									<ul className={s.ul_kategori}>
-										<li className={s.list_kategori}>
-											<Link
-												className={s.link}
-												href="#"
-												to="#"
-											>
-												Berita
-											</Link>
-										</li>
-										<li className={s.list_kategori}>
-											<Link
-												className={s.link}
-												href="#"
-												to="#"
-											>
-												Pengumuman
-											</Link>
-										</li>
-									</ul>
-								</div>
-								<div className={s.berita_terbaru}>
-									<h4>Pos-pos terbaru</h4>
-									<ul className={s.ul_kategori}>
-										<li className={s.list_kategori}>
-											<Link
-												className={s.link}
-												href="#"
-												to="#"
-											>
-												Berita
-											</Link>
-										</li>
-										<li className={s.list_kategori}>
-											<Link
-												className={s.link}
-												href="#"
-												to="#"
-											>
-												Pengumuman
-											</Link>
-										</li>
-									</ul>
-								</div>
-							</Paper>
+							<Aside />
 						</Grid>
 					</Grid>
 				</div>

@@ -21,6 +21,7 @@ import s from "./../../asset/css/daftar_matakuliah_TI.module.css";
 import { Link } from "react-router-dom";
 
 // my footer
+import Aside from './../../component/aside_pages/aside';
 import Footer from "./../../component/footer/Footer.js";
 
 // data mata kuliah TI
@@ -134,58 +135,7 @@ class daftar_matakuliah_TI extends React.Component {
 							</Paper>
 						</Grid>
 						<Grid item sm={3}>
-							<Paper
-								className={s.paperKategory}
-								variant="outlined"
-								square
-							>
-								<div className={s.kategori}>
-									<h4>Kategori</h4>
-									<ul className={s.ul_kategori}>
-										<li className={s.list_kategori}>
-											<Link
-												className={s.link}
-												href="#"
-												to="#"
-											>
-												Berita
-											</Link>
-										</li>
-										<li className={s.list_kategori}>
-											<Link
-												className={s.link}
-												href="#"
-												to="#"
-											>
-												Pengumuman
-											</Link>
-										</li>
-									</ul>
-								</div>
-								<div className={s.berita_terbaru}>
-									<h4>Pos-pos terbaru</h4>
-									<ul className={s.ul_kategori}>
-										<li className={s.list_kategori}>
-											<Link
-												className={s.link}
-												href="#"
-												to="#"
-											>
-												Berita
-											</Link>
-										</li>
-										<li className={s.list_kategori}>
-											<Link
-												className={s.link}
-												href="#"
-												to="#"
-											>
-												Pengumuman
-											</Link>
-										</li>
-									</ul>
-								</div>
-							</Paper>
+							<Aside />
 						</Grid>
 					</Grid>
 				</div>

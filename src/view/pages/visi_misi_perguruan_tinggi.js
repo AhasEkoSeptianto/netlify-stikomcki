@@ -9,6 +9,8 @@ import {
 	Grid,
 } from "@material-ui/core";
 
+import Aside from './../../component/aside_pages/aside';
+
 // module react-anchor
 import ScrollableAnchor from "react-scrollable-anchor";
 
@@ -138,42 +140,7 @@ class visi_misi_perguruan_tinggi extends React.Component {
 							</Paper>
 						</Grid>
 						<Grid item sm={3}>
-							<Paper
-								className={s.paperKategory}
-								variant="outlined"
-								square
-							>
-								<div className={s.kategori}>
-									<h4>Kategori</h4>
-									<ul className={s.ul_kategori}>
-										<li className={s.list_kategori}>
-											<Link className={s.link} href="#">
-												Berita
-											</Link>
-										</li>
-										<li className={s.list_kategori}>
-											<Link className={s.link} href="#">
-												Pengumuman
-											</Link>
-										</li>
-									</ul>
-								</div>
-								<div className={s.berita_terbaru}>
-									<h4>Pos-pos terbaru</h4>
-									<ul className={s.ul_kategori}>
-										<li className={s.list_kategori}>
-											<Link className={s.link} href="#">
-												Berita
-											</Link>
-										</li>
-										<li className={s.list_kategori}>
-											<Link className={s.link} href="#">
-												Pengumuman
-											</Link>
-										</li>
-									</ul>
-								</div>
-							</Paper>
+							<Aside />
 						</Grid>
 					</Grid>
 				</div>
