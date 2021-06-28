@@ -1,11 +1,12 @@
 import React from "react";
 
 // css
-import s from "./../../../../asset/css/admin/dashboard/Dashboard.module.css";
+import s from "./../../../asset/css/admin/dashboard/Dashboard.module.css";
 
 // component
-import Chart from './lib/cartjs/chart.js';
-import News_table from './lib/table/news_tables';
+import Chart from './component/cartjs/chart.js';
+import News_table from './component/table/news_tables';
+import Calendar from './component/calendar/calendar';
 
 // react material ui
 import { Grid, Card } from '@material-ui/core';
@@ -17,7 +18,7 @@ import { Grid, Card } from '@material-ui/core';
 
 
 // lib
-import { get, post } from './../../../../lib/axios.js';
+import { get, post } from './../../../lib/axios.js';
 import { connect } from 'react-redux';
 
 class Dashboard extends React.Component {
@@ -40,8 +41,6 @@ class Dashboard extends React.Component {
 		let Visitor = await get(`${process.env.REACT_APP_BASE_URL}api/getvisitor`);
 		this.setState({visitor: Visitor.data.visitor});
 
-		let Mahasiswa = await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`, { skip: 0 });
-		this.setState({mahasiswa: Mahasiswa.data.allMhs.length });
 
 	}
 
@@ -81,7 +80,7 @@ class Dashboard extends React.Component {
 				</Grid>
 
 				<Grid item xs={12} lg={4}>
-					{/* <Calendar /> */}
+					<Calendar />
 				</Grid>
 
 

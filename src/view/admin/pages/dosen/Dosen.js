@@ -4,19 +4,19 @@ import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 
 // css
-import s from './../../../../../asset/css/admin/dashboard/pages/mahasiswa/mahasiswa.module.css';
+import s from './../../../../asset/css/admin/dashboard/pages/mahasiswa/mahasiswa.module.css';
 
 // lib
-import { post } from './../../../../../lib/axios';
-import { changeName } from './../../../../../lib/changeFormName.js';
+import { post } from './../../../../lib/axios';
+import { changeName } from './../../../../lib/changeFormName.js';
 
 // material ui
 import { Modal, Backdrop, Fade} from '@material-ui/core';
 
 import { connect } from 'react-redux';
 
-import Loading from './../../../../../component/animLoading/loading.js';
-import Breadcumb from './../../../../../component/breadCumb/breadcumb';
+import Loading from './../../../../component/animLoading/loading.js';
+import Breadcumb from './../../../../component/breadCumb/breadcumb';
 
 class Dosen extends React.Component{
 

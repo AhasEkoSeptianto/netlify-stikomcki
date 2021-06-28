@@ -1,20 +1,23 @@
 import React from 'react';
 
-import s from './../../../../../asset/css/admin/dashboard/pages/mahasiswa/addMhs.module.css';
+import s from './../../../../asset/css/admin/dashboard/pages/mahasiswa/addMhs.module.css';
 
 // lib
-import { changeName, maxLength, changeNumberPhone } from './../../../../../lib/changeFormName.js';
-import { post } from './../../../../../lib/axios.js';
-import Breadcumbs from './../../../../../component/breadCumb/breadcumb';
+import { changeName, maxLength, changeNumberPhone } from './../../../../lib/changeFormName.js';
+import { post } from './../../../../lib/axios.js';
 
 // material ui
 import { Paper, FormControl, InputLabel, Select, TextField, Button, InputAdornment } from '@material-ui/core';
 
-class addMhs extends React.Component{
+
+class updateMhs extends React.Component{
 
 	constructor(props){
 		super(props)
 		this.state = {
+			isLoading: true,
+			form_id: '',
+			form_nim: '',
 			form_nama:'',
 			form_jurusan: '',
 			form_semester: '',
@@ -44,7 +47,8 @@ class addMhs extends React.Component{
 
 	submitForm = async () => {
 
-		await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa/addMhs`, {
+		await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa/updateMhs`, {
+			id: this.state.form_id,
 			nama: this.state.form_nama,
 			jurusan: this.state.form_jurusan,
 			semester: this.state.form_semester,
@@ -57,13 +61,37 @@ class addMhs extends React.Component{
 
 	}
 
-	render(){
-		return (
-			<div className={s.body}>
+	async componentDidMount(){
 
-				<Breadcumbs path={this.props.location.pathname} />
+		if (!this.props.location.id){
+			this.props.history.push('/dashboard/mahasiswa')
+		}
+
+		var updateMhs = await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa/findMhs`, {id: this.props.location.id});
+
+		this.setState({
+			form_id: updateMhs.data.mahasiswa[0]._id,
+			form_nim: updateMhs.data.mahasiswa[0].nim,
+			form_nama: updateMhs.data.mahasiswa[0].nama,
+			form_jurusan: updateMhs.data.mahasiswa[0].jurusan,
+			form_semester: updateMhs.data.mahasiswa[0].semester,
+			form_kelas: updateMhs.data.mahasiswa[0].kelas,
+			form_alamat: updateMhs.data.mahasiswa[0].alamat,
+			form_notelp: updateMhs.data.mahasiswa[0].notelp,
+			isLoading: false,
+		})
+	}
+
+	render(){
+		return(
+			<div className={this.state.isLoading ? s.loading : s.body }>
+				<h1 className={s.titleHeader}>Update Mahasiswa</h1>
 
 				<Paper className={s.container_form}>
+
+					<TextField label="ID" className={s.formControl} value={this.state.form_id} onChange={this.setFormName} InputProps={{ readOnly: true }} disabled />
+
+					<TextField label="Nim" className={s.formControl} value={this.state.form_nim} onChange={this.setFormName} InputProps={{ readOnly: true }} disabled />
 
 					<TextField label="Nama" className={s.formControl} value={this.state.form_nama} onChange={this.setFormName} maxlength="50" />
 
@@ -90,7 +118,7 @@ class addMhs extends React.Component{
 				          <option aria-label="None" value="" />
 				          <option value={1}>1</option>
 				          <option value={2}>2</option>
-				          <option value={3}>3</option>
+				          <option value={2}>2</option>
 				          <option value={4}>4</option>
 				          <option value={5}>5</option>
 				          <option value={6}>6</option>
@@ -128,4 +156,4 @@ class addMhs extends React.Component{
 	}
 }
 
-export default addMhs;
+export default updateMhs;

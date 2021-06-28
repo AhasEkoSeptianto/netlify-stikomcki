@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { get } from './../../../../../../lib/axios';
+import { get } from './../../../../../lib/axios';
 
 class news_tables extends React.Component{
 
@@ -42,7 +42,7 @@ class news_tables extends React.Component{
 								<td>{index + 1}</td>
 								<td>{val.title}</td>
 								<td>
-									<img src={(`${process.env.REACT_APP_BASE_URL + val.imageUrl}`)} className='max-h-40' />
+									<img src={(`${process.env.REACT_APP_BASE_URL + val.imageUrl}`)} alt='' className='max-h-40' />
 								</td>
 								<td>{val.content}</td>
 								<td>{val.time_post}</td>

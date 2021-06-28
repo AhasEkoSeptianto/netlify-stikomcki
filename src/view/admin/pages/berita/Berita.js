@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./../../../../../asset/css/admin/dashboard/pages/berita.module.css";
+import styles from "./../../../../asset/css/admin/dashboard/pages/berita.module.css";
 
 import Axios from "axios";
 
@@ -12,9 +12,9 @@ import { Card, Modal, Backdrop, Fade, Button, Container } from '@material-ui/cor
 import Cookies from "universal-cookie";
 
 // lib
-import { post } from './../../../../../lib/axios.js';
+import { post } from './../../../../lib/axios.js';
 
-import Breadcumbs from './../../../../../component/breadCumb/breadcumb';
+import Breadcumbs from './../../../../component/breadCumb/breadcumb';
 
 
 import { connect } from 'react-redux';

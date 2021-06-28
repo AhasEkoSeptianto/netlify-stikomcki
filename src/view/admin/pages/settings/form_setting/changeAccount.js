@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from "./../../../../../../asset/css/admin/dashboard/pages/settings.module.css";
+import styles from "./../../../../../asset/css/admin/dashboard/pages/settings.module.css";
 
 class changeAccount extends React.Component{
 

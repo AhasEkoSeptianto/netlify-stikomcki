@@ -4,19 +4,19 @@ import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 
 // css
-import s from './../../../../../asset/css/admin/dashboard/pages/mahasiswa/mahasiswa.module.css';
+import s from './../../../../asset/css/admin/dashboard/pages/mahasiswa/mahasiswa.module.css';
 
 // lib
-import { post } from './../../../../../lib/axios';
-import { changeName } from './../../../../../lib/changeFormName.js';
+import { post } from './../../../../lib/axios';
+import { changeName } from './../../../../lib/changeFormName.js';
 
 // material ui
 import { Modal, Backdrop, Fade} from '@material-ui/core';
 
 import { connect } from 'react-redux';
 
-import Loading from './../../../../../component/animLoading/loading.js';
-import Breadcumb from './../../../../../component/breadCumb/breadcumb';
+import Loading from './../../../../component/animLoading/loading.js';
+import Breadcumb from './../../../../component/breadCumb/breadcumb';
 
 class Mahasiswa extends React.Component{
 
@@ -25,7 +25,7 @@ class Mahasiswa extends React.Component{
 		this.state = {
 			isLoading: true,
 			allMhs: [],
-			filter:'',
+			showMhs: [],
 			modal: {
 				isLoading: false,
 				open: false,
@@ -33,7 +33,7 @@ class Mahasiswa extends React.Component{
 				id_mhs: null,
 			},
 			pagination: {
-				firstNumb: null,
+				firstNumb: 1,
 				maxPages: 0,
 				posPages: 1,
 			}
@@ -48,41 +48,55 @@ class Mahasiswa extends React.Component{
 	}
 
 	componentDidMount(){
-		this.updateMhs();
+		this.getMhs();
 		this.props.changeNav(this.props.location.pathname);
 	}
 
 	changePagination = async (val) => {
-		switch (val) {
-			case '+' : {
-				this.state.pagination.posPages < this.state.pagination.maxPages  ? this.updateMhs(this.state.pagination.posPages + 1 ) : console.log('page unknow') ;
-				break;
-			} case '-' : {
-				this.state.pagination.posPages > 1 ? this.updateMhs( this.state.pagination.posPages - 1 ) : console.log('page unknow');
-				break;
-			} default : {
-				console.log('errorr at changePagination')
-			}
+		if ( val === '+' && this.state.pagination.posPages < this.state.pagination.maxPages ) {
+			 this.setState({
+				showMhs: this.state.allMhs.slice(this.state.pagination.firstNumb + 8, this.state.pagination.firstNumb + 16),
+				pagination: {
+					...this.state.pagination,
+					firstNumb: this.state.pagination.firstNumb + 8,
+					posPages: this.state.pagination.posPages + 1,
+				},
+			})
+		} else if ( val === '-' && this.state.pagination.posPages > 1 ) {
+			 this.setState({
+				showMhs: this.state.allMhs.slice(this.state.pagination.firstNumb - 8, this.state.pagination.firstNumb),
+				pagination: {
+					...this.state.pagination,
+					firstNumb: this.state.pagination.firstNumb - 8,
+					posPages: this.state.pagination.posPages - 1,
+				},
+			})
 		}
-
-		if (val < 100) {
-			this.updateMhs( val );
-		}
-
 	}
 
 	filterMhs = async (val) => {
-		var allMhs = await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa/filterMhs`, {mhs: this.state.filter});
-		this.setState({allMhs: allMhs.data.filter});
+		await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa/filterMhs`, {
+			mhs: document.getElementById('filter_mahasiswa').value,
+		}).then(res => {console.log(res);this.setState({showMhs: res.data.filter})})
+			.catch(err => console.log(err));
 	}
 
-	async updateMhs(skipPage = 1){
+	async getMhs(){
 
 		this.setState({isLoading: true})
 
-		var allMhs = await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`, {pages: skipPage});
-		console.log(allMhs);
-		this.setState({allMhs: allMhs.data.mhs, isLoading:false, pagination: {...this.state.pagination, maxPages: allMhs.data.maxPages, posPages:allMhs.data.posPages, firstNumb: allMhs.data.firstNumb }});
+		await post(`${process.env.REACT_APP_BASE_URL}api/mahasiswa`)
+			.then(res => this.setState({
+				allMhs: res.data.Mhs,
+				showMhs: res.data.Mhs.slice(0,8),
+				isLoading:false,
+				pagination: {
+					...this.state.pagination,
+					maxPages: Math.ceil(res.data.Mhs.length / 8),
+				}
+			}))
+			.catch(err => console.log(err));
+
 	}
 
 	render(){
@@ -126,8 +140,8 @@ class Mahasiswa extends React.Component{
 						</Link>
 					</div>
 					<div className='flex justify-end w-1/2'>
-						<input type='text' className='border text-black px-1' />
-						<button className='bg-blue-300 p-1 rounded-r-lg' onclick={this.filterMhs}>filter</button>
+						<input type='text' className='border text-black px-1' id="filter_mahasiswa" />
+						<button className='bg-blue-300 p-1 rounded-r-lg' onClick={this.filterMhs}>filter</button>
 					</div>
 
 				</div>
@@ -150,9 +164,9 @@ class Mahasiswa extends React.Component{
 					</thead>
 
 					<tbody>
-						{this.state.allMhs.map((val, index) => (
+						{this.state.showMhs.map((val, index) => (
 							<tr>
-								<td className={s.no}>{this.state.pagination.firstNumb + 1 + index}</td>
+								<td className={s.no}>{this.state.pagination.firstNumb + index}</td>
 								<td className={s.nim}>{val.nim}</td>
 								<td className={s.nama}>{changeName(val.nama)}</td>
 								<td className={s.jurusan}>{changeName(val.jurusan)}</td>

@@ -1,15 +1,15 @@
 import React from 'react';
 
-import s from './../../../../../asset/css/admin/dashboard/pages/mahasiswa/addMhs.module.css';
+import s from './../../../../asset/css/admin/dashboard/pages/mahasiswa/addMhs.module.css';
 
 // lib
-import { changeName, maxLength, changeNumberPhone } from './../../../../../lib/changeFormName.js';
-import { post } from './../../../../../lib/axios.js';
-import Breadcumbs from './../../../../../component/breadCumb/breadcumb';
+import { changeName, maxLength, changeNumberPhone } from './../../../../lib/changeFormName.js';
+import { post } from './../../../../lib/axios.js';
+import Breadcumbs from './../../../../component/breadCumb/breadcumb';
 import { validate } from 'react-email-validator';
 
 // material ui
-import { Paper, FormControl, InputLabel, Select, TextField, Button, InputAdornment } from '@material-ui/core';
+import { Paper, TextField, Button, InputAdornment } from '@material-ui/core';
 
 class addDosen extends React.Component{
 
@@ -57,8 +57,6 @@ class addDosen extends React.Component{
 	setEmail = (e) => {
 		this.setState({form_email: e.target.value});
 		var valid = validate(this.state.form_email);
-		console.log(valid);
-		var id = document.getElementById('dosen_email_form')
 		if (valid) {
 			this.setState({form_option: {...this.state.form_option, validate: {email: false}}})
 		} else {

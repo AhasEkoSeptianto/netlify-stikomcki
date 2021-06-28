@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 
-import styles from "./../../../../../../asset/css/admin/dashboard/pages/settings.module.css";
+import styles from "./../../../../../asset/css/admin/dashboard/pages/settings.module.css";
 // redux
 import { connect } from 'react-redux';
 
 // lib
-import { post } from './../../../../../../lib/axios';
-import { getCookies, setCookies } from './../../../../../../lib/cookie';
+import { post } from './../../../../../lib/axios';
+import { getCookies, setCookies } from './../../../../../lib/cookie';
 
 // react material ui
 import Modal from '@material-ui/core/Modal';

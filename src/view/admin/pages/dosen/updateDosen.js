@@ -1,13 +1,13 @@
 import React from 'react';
 
-import s from './../../../../../asset/css/admin/dashboard/pages/mahasiswa/addMhs.module.css';
+import s from './../../../../asset/css/admin/dashboard/pages/mahasiswa/addMhs.module.css';
 
 // lib
-import { changeName, maxLength, changeNumberPhone } from './../../../../../lib/changeFormName.js';
-import { post } from './../../../../../lib/axios.js';
+import { changeName, maxLength, changeNumberPhone } from './../../../../lib/changeFormName.js';
+import { post } from './../../../../lib/axios.js';
 
 // material ui
-import { Paper, FormControl, InputLabel, Select, TextField, Button, InputAdornment } from '@material-ui/core';
+import { Paper, TextField, Button, InputAdornment } from '@material-ui/core';
 
 
 class updateDosen extends React.Component{

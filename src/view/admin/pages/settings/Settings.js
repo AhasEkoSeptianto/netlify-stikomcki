@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./../../../../../asset/css/admin/dashboard/pages/settings.module.css";
+import styles from "./../../../../asset/css/admin/dashboard/pages/settings.module.css";
 
 // comp form
 import ChangeName from './form_setting/changeName';
@@ -8,7 +8,7 @@ import ChangeAccount from './form_setting/changeAccount';
 
 import { connect } from 'react-redux';
 
-import Breadcumbs from './../../../../../component/breadCumb/breadcumb';
+import Breadcumbs from './../../../../component/breadCumb/breadcumb';
 
 class Settings extends React.Component {
 

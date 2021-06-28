@@ -1,14 +1,14 @@
 import React from "react";
 
 // mycss
-import styles from "./../../../asset/css/admin/dashboard.module.css";
+import styles from "./../../asset/css/admin/dashboard.module.css";
 
 // user image
-import Img_user from "./../../../asset/image/user/user.png";
+import Img_user from "./../../asset/image/user/user.png";
 
 // icons
-import IconNavbar from "./../../../asset/image/icons/navbar.png";
-import IconsCloceNav from "./../../../asset/image/icons/close.png";
+import IconNavbar from "./../../asset/image/icons/navbar.png";
+import IconsCloceNav from "./../../asset/image/icons/close.png";
 
 // component nav
 import NavLeft from "./comp_dashboard/navbar_left/navbarLeft.js";
@@ -18,7 +18,7 @@ import NavRight from "./comp_dashboard/navbar_right/navbarRight.js";
 import { Link } from "react-router-dom";
 
 // lib
-import { is_auth } from './../../../lib/is_auth';
+import { is_auth } from './../../lib/is_auth';
 
 // redux
 import { connect } from 'react-redux'; 
@@ -68,8 +68,9 @@ class dashboard extends React.Component {
 	}
 
 	componentDidMount() {
+		document.title = 'dashboard';
 		let isAuth = is_auth();
-		isAuth ? console.log('user loggend') : this.props.history.push('/') ;
+		isAuth ? console.log('') : this.props.history.push('/') ;
 		this.changeDeviceWidth();
 		window.addEventListener('resize', this.changeDeviceWidth);
 
